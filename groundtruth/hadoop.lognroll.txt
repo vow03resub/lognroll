@@ -1,0 +1,333 @@
+  8349  8349 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.container.ContainerImpl: Container .* transitioned from .* to .*
+  7768  7768 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: Memory usage of ProcessTree .* for container\-id .* of .* physical memory used; .* of .* virtual memory used
+  5591  5591 INFO org.apache.hadoop.yarn.server.resourcemanager.rmcontainer.RMContainerImpl: .* Container Transitioned from .* to .*
+  4201  4201 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServices: Got event .* for appId .*
+  2799  2799 INFO SecurityLogger.org.apache.hadoop.ipc.Server: Auth successful for .* \(auth:SIMPLE\)
+  2796  2796 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.ParentQueue: Re\-sorting .* queue: root.default stats: default: capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>, usedCapacity=.*, absoluteUsedCapacity=.*, numApps=.*, numContainers=.*
+  2796  2796 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.ParentQueue: .* queue=.* usedCapacity=.* absoluteUsedCapacity=.* used=<memory:.*, vCores:.*> cluster=<memory:.*, vCores:.*>
+  2796  2796 INFO org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger: USER=.* OPERATION=.* .* Container TARGET=.* RESULT=.* APPID=.* CONTAINERID=.*
+  2793  2793 INFO org.apache.hadoop.yarn.server.nodemanager.NMAuditLogger: USER=.* IP=.* OPERATION=.* Container Request TARGET=.* RESULT=.* APPID=.* CONTAINERID=.*
+  2392  2392 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: .* resource\-monitoring for .*
+  1412  1412 INFO org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: Deleting absolute path : .*
+  1398  1398 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: default used=<memory:.*, vCores:.*> numContainers=.* user=.* user\-resources=<memory:.*, vCores:.*>
+  1398  1398 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: completedContainer container=.*: .* queue=.*: capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>, usedCapacity=.*, absoluteUsedCapacity=.*, numApps=.*, numContainers=.* cluster=<memory:.*, vCores:.*>
+  1398  1398 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: assignedContainer application attempt=.* container=.*: .* queue=.*: capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>, usedCapacity=.*, absoluteUsedCapacity=.*, numApps=.*, numContainers=.* clusterResource=<memory:.*, vCores:.*> type=.* requestedPartition=
+  1398  1398 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.SchedulerNode: Released container .* of capacity <memory:.*, vCores:.*> on host .*, which currently has .* containers, <memory:.*, vCores:.*> used and <memory:.*, vCores:.*> available, release resources=.*
+  1398  1398 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.SchedulerNode: Assigned container .* of capacity <memory:.*, vCores:.*> on host .*, which has .* containers, <memory:.*, vCores:.*> used and <memory:.*, vCores:.*> available after allocation
+  1397  1397 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.common.fica.FiCaSchedulerApp: Completed container: .* in state: COMPLETED event:FINISHED
+  1397  1397 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Application attempt .* released container .* on node: host: .* #containers=.* available=<memory:.*, vCores:.*> used=<memory:.*, vCores:.*> with event: FINISHED
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch: Cleaning up container .*
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.application.ApplicationImpl: Removing .* from application .*
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.application.ApplicationImpl: Adding .* to application .*
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: Stopping container with container Id: .*
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: Start request for .* by user james
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.NMAuditLogger: USER=.* OPERATION=.* Finished \- .* TARGET=.* RESULT=.* APPID=.* CONTAINERID=.*
+  1397  1397 INFO org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: launchContainer: .*
+  1392  1392 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServices: Got APPLICATION_INIT for service mapreduce_shuffle
+  1392  1392 INFO org.apache.hadoop.mapred.ShuffleHandler: Added token for .*
+  1354  1354 WARN org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: Exit code from container .* is : .*
+  1151  1151 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Removed completed containers from NM context: .*
+  1046  1046 INFO org.apache.hadoop.mapred.ShuffleHandler: Setting connection close header...
+   427   427 INFO .*: .* = .*
+   408   408 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: Neither virutal\-memory nor physical\-memory monitoring is needed. Not running the monitor\-thread
+   194   194 INFO org.apache.hadoop.yarn.server.webproxy.WebAppProxyServlet: dr.who is accessing unchecked .* which is the app master GUI of .* owned by james
+   151   151 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Receiving .* src: .* dest: .*
+   150   150 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: PacketResponder: .*, type=.* terminating
+   150   150 INFO org.apache.hadoop.hdfs.server.datanode.DataNode.clienttrace: src: .* dest: .* bytes: .* op: HDFS_WRITE, cliID: .* offset: .* srvID: .* blockid: .*, duration: .*
+   150   150 INFO BlockStateChange: BLOCK\* addStoredBlock: blockMap updated: .* is added to .* size .*
+   138   138 INFO org.apache.hadoop.http.HttpServer2: Added filter static_user_filter \(class=.*\) to context .*
+   102   102 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetAsyncDiskService: Scheduling .* file .* for deletion
+   102   102 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetAsyncDiskService: Deleted .* file .*
+    72    72 INFO org.apache.hadoop.ipc.Server: Starting Socket Reader #1 for port .*
+    72    72 INFO org.apache.hadoop.ipc.Server: IPC Server listener on .* starting
+    72    72 INFO org.apache.hadoop.ipc.Server: IPC Server Responder: starting
+    72    72 INFO org.apache.hadoop.ipc.CallQueueManager: Using callQueue: class java.util.concurrent.LinkedBlockingQueue queueCapacity: .*
+    65    65 INFO org.apache.hadoop.hdfs.StateChange: DIR\* completeFile: .* is closed by .*
+    61    61 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService: Writing credentials to the nmPrivate file .* Credentials list:
+    61    61 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService: Created localizer for .*
+    61    61 INFO org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: Initializing user james
+    61    61 INFO org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: Copying from .* to .*
+    60    60 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.application.ApplicationImpl: Application .* transitioned from .* to .*
+    51    51 INFO org.apache.hadoop.yarn.factories.impl.pb.RpcServerFactoryPBImpl: Adding protocol .* to the server
+    50    50 INFO org.apache.hadoop.hdfs.StateChange: BLOCK\* allocate .* for .*
+    46    46 INFO org.mortbay.log: jetty\-6.1.26
+    46    46 INFO org.mortbay.log: Started .*
+    46    46 INFO org.mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter\(org.mortbay.log\) via org.mortbay.log.Slf4jLog
+    46    46 INFO org.apache.hadoop.security.authentication.server.AuthenticationFilter: Unable to initialize FileSignerSecretProvider, falling back to use random secrets.
+    46    46 INFO org.apache.hadoop.metrics2.impl.MetricsSystemImpl: Scheduled snapshot period at .* second\(s\).
+    46    46 INFO org.apache.hadoop.metrics2.impl.MetricsSystemImpl: .* metrics system started
+    46    46 INFO org.apache.hadoop.metrics2.impl.MetricsConfig: loaded properties from hadoop\-metrics2.properties
+    46    46 INFO org.apache.hadoop.http.HttpServer2: Jetty bound to port .*
+    46    46 INFO org.apache.hadoop.http.HttpServer2: Added global filter 'safety' \(class=.*\)
+    46    46 INFO org.apache.hadoop.http.HttpRequestLog: Http request log for .* is not defined
+    46    46 INFO .*: registered UNIX signal handlers for .*
+    46    46 INFO .*: STARTUP_MSG:
+    45    45 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.RMAppAttemptImpl: .* State change from .* to .*
+    43    43 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainerLaunch: Container .* succeeded
+    42    42 INFO org.apache.hadoop.http.HttpServer2: adding path spec: .*
+    40    40 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.LocalizedResource: Resource .* transitioned from INIT to DOWNLOADING
+    40    40 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.LocalizedResource: Resource .* transitioned from DOWNLOADING to LOCALIZED
+    35    35 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMAppImpl: .* State change from .* to .* on event=.*
+    35    35 INFO org.apache.hadoop.util.GSet: Computing capacity for map .*
+    35    35 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Number of failed storage changes from .* to .*
+    34    34 INFO BlockStateChange: BLOCK\* addToInvalidates: .*
+    30    30 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Opened .* server at .*
+    30    30 INFO .*: Rolling master\-key for container\-tokens, got key with id .*
+    26    26 INFO BlockStateChange: BLOCK\* BlockManager: ask .* to delete .*
+    25    25 WARN org.apache.hadoop.hdfs.server.common.Util: Path .* should be specified as a URI in configuration files. Please update hdfs configuration.
+    25    25 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: .* Total time for transactions\(ms\): .* Number of transactions batched in Syncs: .* Number of syncs: .* SyncTimes\(ms\): .*
+    25    25 INFO org.apache.hadoop.hdfs.server.common.Storage: Lock on .* acquired by nodename .*
+    22    22 INFO org.apache.hadoop.security.token.delegation.AbstractDelegationTokenSecretManager: Updating the current master key for generating delegation tokens
+    22    22 INFO org.apache.hadoop.hdfs.server.namenode.TransferFsImage: Transfer took .* at .*
+    22    22 INFO org.apache.hadoop.hdfs.server.namenode.TransferFsImage: Downloaded file .* size .* bytes.
+    21    21 INFO org.mortbay.log: Extract jar:file:.*/webapps/.* to .*
+    21    21 INFO org.apache.hadoop.yarn.webapp.WebApps: Web app .* started at .*
+    21    21 INFO org.apache.hadoop.yarn.webapp.WebApps: Registered webapp guice modules
+    20    20 INFO org.apache.hadoop.yarn.server.resourcemanager.security.NMTokenSecretManagerInRM: Sending NMToken for nodeId : .* for container : .*
+    20    20 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: .*=.*
+    18    18 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: .* memory check enabled: true
+    17    17 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.AppSchedulingInfo: checking for deactivate of application :.*
+    17    17 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Successfully sent block report .* containing .* storage report\(s\), of which we sent 1. The reports had .* total blocks and used .* RPC\(s\). This took .* msec to generate and .* msecs for RPC and NN processing. Got back one command: FinalizeCommand/5.
+    17    17 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Got finalize command for block pool .*
+    17    17 INFO BlockStateChange: BLOCK\* processReport .* from storage .* node .* datanodeUuid=.*, infoPort=.*, infoSecurePort=.*, ipcPort=.*, storageInfo=lv=.*;cid=.*;nsid=.*;c=.*\), blocks: .* hasStaleStorage: false, processing time: .* msecs
+    16    16 INFO org.apache.hadoop.hdfs.server.namenode.TransferFsImage: Opening connection to .*
+    16    16 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Start loading edits file .*
+    16    16 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Reading .* expecting start txid .*
+    16    16 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Edits file .* of size .* edits # .* loaded in .* seconds
+    15    15 WARN org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServices: The Auxilurary Service named 'mapreduce_shuffle' in the configuration is for class org.apache.hadoop.mapred.ShuffleHandler which has a name of 'httpshuffle'. Because these are not the same tools trying to send ServiceData and read Service Meta Data may have issues unless the refer to the name in the config.
+    15    15 INFO org.apache.hadoop.yarn.util.RackResolver: Resolved .* to /default\-rack
+    15    15 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Added node .* clusterResource: <memory:.*, vCores:.*>
+    15    15 INFO org.apache.hadoop.yarn.server.resourcemanager.rmnode.RMNodeImpl: .* Node Transitioned from NEW to RUNNING
+    15    15 INFO org.apache.hadoop.yarn.server.resourcemanager.ResourceTrackerService: NodeManager from node .* httpPort: .* registered with capability: <memory:.*, vCores:.*>, assigned nodeId .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.webapp.WebServer: Instantiating NMWebApp at .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.security.NMContainerTokenSecretManager: Updating node address : .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: Using ResourceCalculatorProcessTree : null
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: Using ResourceCalculatorPlugin : .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.loghandler.NonAggregatingLogHandler: Scheduling Log Deletion for application: .* with delay of .* seconds
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService: usercache path : file:.*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService: Localizer started on port .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: Creating a new application reference for app .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: ContainerManager started at .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: ContainerManager bound to .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: Blocking new container\-requests as container manager rpc server is still starting.
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServices: Adding auxiliary service httpshuffle, "mapreduce_shuffle"
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Sending out .* NM container statuses: .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Registering with RM using containers .*
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Registered with ResourceManager as .* with total resource of <memory:.*, vCores:.*>
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Notifying ContainerManager to unblock new container\-requests
+    15    15 INFO org.apache.hadoop.yarn.server.nodemanager.NodeStatusUpdaterImpl: Initialized nodemanager for null: physical\-memory=.* virtual\-memory=.* virtual\-cores=.*
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.loghandler.event.LogHandlerEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.loghandler.NonAggregatingLogHandler
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.sharedcache.SharedCacheUploadEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.sharedcache.SharedCacheUploadService
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.event.LocalizerEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService\$LocalizerTracker
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.event.LocalizationEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.localizer.ResourceLocalizationService
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainersLauncherEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.launcher.ContainersLauncher
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.container.ContainerEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl\$ContainerEventDispatcher
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.application.ApplicationEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl\$ApplicationEventDispatcher
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServicesEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.AuxServices
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.NodeManagerEventType for class org.apache.hadoop.yarn.server.nodemanager.NodeManager
+    15    15 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.nodemanager.ContainerManagerEventType for class org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl
+    15    15 INFO org.apache.hadoop.yarn.client.RMProxy: Connecting to ResourceManager at .*
+    15    15 INFO org.apache.hadoop.net.NetworkTopology: Adding a new node: .*
+    15    15 INFO org.apache.hadoop.mapred.ShuffleHandler: httpshuffle listening on port .*
+    15    15 INFO org.apache.hadoop.http.HttpServer2: Added filter RMAuthenticationFilter \(class=.*\) to context .*
+    15    15 INFO org.apache.hadoop.hdfs.server.namenode.top.window.RollingWindowManager: topN size for command .* is: .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.web.DatanodeHttpServer: Listening HTTP traffic on .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Total time to scan all replicas for block pool .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Total time to add all replicas to map: .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Time to add replicas to map for block pool .* on volume .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Time taken to scan block pool .* on .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Scanning block pool .* on volume .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Registered FSDatasetState MBean
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Adding replicas to map for block pool .* on volume .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Adding block pool .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Added volume \- .* StorageType: DISK
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Added new volume: .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.VolumeScanner: .* no suitable block pools found to scan. Waiting .* ms.
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: Periodic Directory Tree Verification scan starting at .* with interval of .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Starting BPOfferServices for nameservices: <default>
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Setting up storage: nsid=.*;bpid=.*;lv=.*;nsInfo=lv=.*;cid=.*;nsid=.*;c=.*;bpid=.*;dnuuid=.*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Refresh request received for nameservices: null
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Number threads for balancing is .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Namenode Block pool .* \(Datanode Uuid .* service to .* trying to claim ACTIVE state with txid=.*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: For namenode .* using BLOCKREPORT_INTERVAL of .* CACHEREPORT_INTERVAL of .* Initial delay: .* heartBeatInterval=.*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Configured hostname is .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Block pool Block pool .* \(Datanode Uuid null\) service to .* successfully registered with NN
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Block pool <registering> \(Datanode Uuid unassigned\) service to .* starting to offer service
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Block pool .* \(Datanode Uuid null\) service to .* beginning handshake with NN
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Balancing bandwith is .* bytes/s
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Acknowledging ACTIVE Namenode Block pool .* \(Datanode Uuid .* service to .*
+    15    15 INFO org.apache.hadoop.hdfs.server.datanode.BlockScanner: Initialized block scanner with targetBytesPerSec .*
+    15    15 INFO org.apache.hadoop.hdfs.server.common.Storage: Using .* threads to upgrade data directories \(dfs.datanode.parallel.volumes.load.threads.num=.*, dataDirs=.*\)
+    15    15 INFO org.apache.hadoop.hdfs.server.common.Storage: Locking is disabled for .*
+    15    15 INFO org.apache.hadoop.hdfs.server.common.Storage: Analyzing storage directories for bpid .*
+    15    15 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeDescriptor: Adding new storage ID .* for DN .*
+    15    15 INFO org.apache.hadoop.hdfs.StateChange: BLOCK\* registerDatanode: from .* datanodeUuid=.*, infoPort=.*, infoSecurePort=.*, ipcPort=.*, storageInfo=lv=.*;cid=.*;nsid=.*;c=.*\) storage .*
+    15    15 INFO org.apache.hadoop.conf.Configuration: found resource .* at file:.*
+    15    15 ERROR org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: dfs.datanode.directoryscan.throttle.limit.ms.per.sec set to value below .* ms/sec. Assuming default value of .*
+    12    12 INFO org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: .* memory check enabled: false
+    12    12 INFO org.apache.hadoop.yarn.server.nodemanager.DefaultContainerExecutor: Deleting path : file:.*
+    12    12 INFO org.apache.hadoop.hdfs.server.namenode.NNStorageRetentionManager: Purging old image FSImageFile\(file=.*, cpktTxId=.*\)
+    12    12 INFO org.apache.hadoop.hdfs.server.namenode.NNStorageRetentionManager: Going to retain .* images with txid >= .*
+    12    12 INFO org.apache.hadoop.hdfs.server.datanode.fsdataset.impl.FsDatasetImpl: Cached dfsUsed found for .*
+    11    11 INFO org.apache.hadoop.security.token.delegation.AbstractDelegationTokenSecretManager: Starting expired delegation token remover thread, tokenRemoverScanInterval=.* min\(s\)
+    11    11 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file .* \-> .*
+    11    11 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at .*
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.security.RMDelegationTokenSecretManager: storing master key with keyID .*
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.ParentQueue: Application .* \- appId: .* user: james leaf\-queue of parent: root #applications: .*
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacitySchedulerConfiguration: max alloc .* per queue for root.default is undefined
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacitySchedulerConfiguration: max alloc .* per queue for root is undefined
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore: Storing RMDTMasterKey.
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore: .* info for app: .*
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.ResourceManager: .* to active state
+    10    10 INFO org.apache.hadoop.yarn.server.resourcemanager.ApplicationMasterService: .* app attempt : .*
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: Caching file names occuring more than .* times
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.NameCache: initialized with .* entries .* lookups
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.LeaseManager: Number of blocks under construction: .*
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsLock is fair: true
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: No KeyProvider found.
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: HA Enabled: false
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Detailed lock hold time metrics enabled: false
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Append Enabled: true
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatProtobuf: Loaded FSImage in .* seconds.
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatPBINode: Loading .* INodes.
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Loaded image for txid .* from .*
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: XAttrs enabled\? true
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: Maximum size of an xattr: .*
+    10    10 INFO org.apache.hadoop.hdfs.server.namenode.FSDirectory: ACLs enabled\? false
+    10    10 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: dfs.namenode.startup.delay.block.deletion.sec is set to .*
+    10    10 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: dfs.block.access.token.enable=.*
+    10    10 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: The block deletion will start around .* Dec .*
+    10    10 INFO org.apache.hadoop.hdfs.server.blockmanagement.BlockManager: Increasing replication from .* to .* for .*
+    10    10 INFO org.apache.hadoop.hdfs.DFSUtil: Starting Web\-server for .* at: .*
+     9     9 WARN org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.ContainersMonitorImpl: NodeManager configured with .* G physical memory allocated to containers, which is more than .* of the total physical memory available .* G\). Thrashing might happen.
+     8     8 INFO org.apache.hadoop.mapreduce.v2.hs.JobHistory: Starting scan to move intermediate done files
+     6     6 WARN org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Checkpoint done. New Image Size: .*
+     6     6 WARN org.apache.hadoop.hdfs.server.datanode.DataNode: Slow BlockReceiver write data to disk cost:.* \(threshold=.*\)
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.TransferFsImage: Uploaded image with txid .* to namenode at .* in .* seconds
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Roll Edit Log from .*
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatProtobuf: Saving image file .* using no compression
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatProtobuf: Image file .* of size .* bytes saved in .* seconds.
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Rolling edit logs
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment .*
+     6     6 INFO org.apache.hadoop.hdfs.server.namenode.Checkpointer: Checkpointer about to load edits from .* stream\(s\).
+     5     5 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one namespace edits storage directory \(dfs.namenode.edits.dir\) configured. Beware of data loss due to lack of redundant storage directories!
+     5     5 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one image storage directory \(dfs.namenode.name.dir\) configured. Beware of data loss due to lack of redundant storage directories!
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.RMContainerTokenSecretManager: Rolling master\-key for container\-tokens
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.RMContainerTokenSecretManager: ContainerTokenKeyRollingInterval: .* and ContainerTokenKeyActivationDelay: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.NMTokenSecretManagerInRM: Rolling master\-key for nm\-tokens
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.NMTokenSecretManagerInRM: NMTokenKeyRollingInterval: .* and NMTokenKeyActivationDelay: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.NMTokenSecretManagerInRM: Clear node set for .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.AMRMTokenSecretManager: Creating password for .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.AMRMTokenSecretManager: Create AMRMToken for ApplicationAttempt: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.AMRMTokenSecretManager: Application finished, removing password for .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.security.AMRMTokenSecretManager: AMRMTokenKeyRollingInterval: .* and AMRMTokenKeyActivationDelay: .* ms
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.ParentQueue: root, capacity=.*, asboluteCapacity=.*, maxCapacity=.*, asboluteMaxCapacity=.*, state=.*, acls=.*:\*ADMINISTER_QUEUE:\*, labels=.*,
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.ParentQueue: Initialized parent\-queue root name=.*, fullname=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: Initializing default
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: Application removed \- appId: .* user: james queue: default #user\-pending\-applications: .* #user\-active\-applications: .* #queue\-pending\-applications: .* #queue\-active\-applications: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: Application added \- appId: .* user: .* leaf\-queue: default #user\-pending\-applications: .* #user\-active\-applications: .* #queue\-pending\-applications: .* #queue\-active\-applications: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.LeafQueue: Application .* from user: james activated in queue: default
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Initialized root queue root: numChildQueue= .* capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>usedCapacity=.*, numApps=.*, numContainers=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Initialized queue: root: numChildQueue= .* capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>usedCapacity=.*, numApps=.*, numContainers=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Initialized queue: default: capacity=.*, absoluteCapacity=.*, usedResources=<memory:.*, vCores:.*>, usedCapacity=.*, absoluteUsedCapacity=.*, numApps=.*, numContainers=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Initialized queue mappings, override: false
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Initialized CapacityScheduler with calculator=.* org.apache.hadoop.yarn.util.resource.DefaultResourceCalculator, minimumAllocation=<<memory:.*, vCores:.*>>, maximumAllocation=<<memory:.*, vCores:.*>>, asynchronousScheduling=.*, asyncScheduleInterval=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Application Attempt .* is done. finalState=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Added Application Attempt .* to scheduler from user james in queue default
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Accepted application .* from user: james, in queue: default
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.AppSchedulingInfo: Application .* requests cleared
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.RMAppAttemptImpl: Updating application attempt .* with final state: FINISHING, and exit status: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.RMAppAttemptImpl: Storing attempt: AppId: .* AttemptId: .* MasterContainer: Container: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMAppImpl: Updating application .* with final state: FINISHING
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMAppImpl: Storing application with id .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore: Updating AMRMToken
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.metrics.SystemMetricsPublisher: YARN system metrics publishing service is not enabled
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncher: Setting up container Container: .* for AM .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncher: Launching .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncher: Done launching container Container: .* for AM .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncher: Command to launch container .* : \$JAVA_HOME/bin/java \-Djava.io.tmpdir=.* \-Dlog4j.configuration=.* \-Dyarn.app.container.log.dir=<LOG_DIR> \-Dyarn.app.container.log.filesize=.* \-Dhadoop.root.logger=.*,CLA \-Dhadoop.root.logfile=.* \-Xmx1024m org.apache.hadoop.mapreduce.v2.app.MRAppMaster .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncher: Cleaning master .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.ResourceManager: Using Scheduler: org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.RMNMInfo: Registered RMNMInfo MBean
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger: USER=.* OPERATION=.* Finished \- Succeeded TARGET=.* RESULT=.* APPID=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger: USER=.* IP=.* OPERATION=.* Application Request TARGET=.* RESULT=.* APPID=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.RMAuditLogger: USER=.* IP=.* OPERATION=.* App Master TARGET=.* RESULT=.* APPID=.* APPATTEMPTID=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.RMAppManager\$ApplicationSummary: appId=.*,name=.*,user=.*,queue=.*,state=.*,trackingUrl=.*,appMasterHost=.*,startTime=.*,finishTime=.*,finalStatus=.*,memorySeconds=.*,vcoreSeconds=.*,preemptedAMContainers=.*,preemptedNonAMContainers=.*,preemptedResources=<memory:0\\, vCores:.*>,applicationType=.*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.ClientRMService: Application with id .* submitted by user james
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.ClientRMService: Allocated new applicationId: .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.ApplicationMasterService: AM registration .*
+     5     5 INFO org.apache.hadoop.yarn.server.resourcemanager.ApplicationMasterService: .* unregistered successfully.
+     5     5 INFO org.apache.hadoop.yarn.security.YarnAuthorizationProvider: org.apache.hadoop.yarn.security.ConfiguredYarnAuthorizer is instiantiated.
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.scheduler.event.SchedulerEventType for class org.apache.hadoop.yarn.server.resourcemanager.ResourceManager\$SchedulerEventDispatcher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.rmnode.RMNodeEventType for class org.apache.hadoop.yarn.server.resourcemanager.ResourceManager\$NodeEventDispatcher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.RMAppAttemptEventType for class org.apache.hadoop.yarn.server.resourcemanager.ResourceManager\$ApplicationAttemptEventDispatcher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMAppEventType for class org.apache.hadoop.yarn.server.resourcemanager.ResourceManager\$ApplicationEventDispatcher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStoreEventType for class org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore\$ForwardingEventHandler
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.amlauncher.AMLauncherEventType for class org.apache.hadoop.yarn.server.resourcemanager.amlauncher.ApplicationMasterLauncher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.RMFatalEventType for class org.apache.hadoop.yarn.server.resourcemanager.ResourceManager\$RMFatalEventDispatcher
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.RMAppManagerEventType for class org.apache.hadoop.yarn.server.resourcemanager.RMAppManager
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.server.resourcemanager.NodesListManagerEventType for class org.apache.hadoop.yarn.server.resourcemanager.NodesListManager
+     5     5 INFO org.apache.hadoop.yarn.event.AsyncDispatcher: Registering class org.apache.hadoop.yarn.nodelabels.event.NodeLabelsStoreEventType for class org.apache.hadoop.yarn.nodelabels.CommonNodeLabelsManager\$ForwardingEventHandler
+     5     5 INFO org.apache.hadoop.util.HostsFileReader: Refreshing hosts \(include/exclude\) list
+     5     5 INFO org.apache.hadoop.security.Groups: clearing userToGroupsMap cache
+     5     5 INFO org.apache.hadoop.http.HttpServer2: addJerseyResourcePackage: packageName=.*;org.apache.hadoop.hdfs.web.resources, pathSpec=.*
+     5     5 INFO org.apache.hadoop.http.HttpServer2: Added filter 'org.apache.hadoop.hdfs.web.AuthFilter' \(class=.*\)
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.TransferFsImage: Image Transfer timeout configured to .* milliseconds
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Web server init done
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Log Size Trigger :.* txns
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Image has changed. Downloading updated image from NN.
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Checkpoint Period :.* secs .* min\)
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: fs.defaultFS is .*
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: createNameNode .*
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: RPC server is binding to deimos26:.*
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: NameNode RPC up at: .*
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.NameNode: Clients are to use deimos26:.* to access this namenode/service.
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Recovering unfinalized segments in .*
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: initializing replication queues
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Starting services required for active state
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache will use .* of total heap and retry cache entry expiry time is .* millis
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache on namenode is enabled
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Registered FSNamesystemState MBean
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Need to save fs image\? false \(staleImage=.*, haEnabled=.*, isRollingUpgrade=.*\)
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Finished loading FSImage in .* msecs
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Planning to load image: FSImageFile\(file=.*, cpktTxId=.*\)
+     5     5 INFO org.apache.hadoop.hdfs.server.namenode.EditLogInputStream: Fast\-forwarding stream .* to transaction ID .*
+     5     5 INFO org.apache.hadoop.hdfs.server.blockmanagement.CacheReplicationMonitor: Starting CacheReplicationMonitor with interval .* milliseconds
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* UnderReplicatedBlocks has .* blocks
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Safe mode is OFF
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Safe mode extension entered.
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Safe mode ON.
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Safe mode ON, in safe mode extension.
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Replication Queue initialization scan for invalid, over\- and under\-replicated blocks completed in .* msec
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Network topology has .* racks and .* datanodes
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: STATE\* Leaving safe mode after .* secs
+     5     5 INFO org.apache.hadoop.hdfs.StateChange: BLOCK\* fsync: .* for .*
+     4     4 INFO org.apache.hadoop.yarn.webapp.View: Getting list of all Jobs.
+     4     4 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.AbstractYarnScheduler: Release request cache is cleaned up
+     3     3 INFO org.apache.hadoop.util.JvmPauseMonitor: Detected pause in JVM or host machine \(eg GC\): pause of approximately .*
+     3     3 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryFileManager: Perms after creating .* Expected: .*
+     2     2 WARN org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl: Event EventType: KILL_CONTAINER sent to absent container .*
+     2     2 INFO org.apache.hadoop.mapreduce.v2.jobhistory.JobHistoryUtils: Default file system .*
+     2     2 INFO org.apache.hadoop.mapreduce.v2.hs.JobHistory: History Cleaner .*
+     2     2 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryFileManager: Moving .* to .*
+     2     2 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: BlockPool .* Total blocks: .* missing metadata .* missing block .* missing blocks in .* mismatched .*
+     1     1 WARN org.apache.hadoop.hdfs.server.datanode.DataNode: .* datanodeUuid=.*, infoPort=.*, infoSecurePort=.*, ipcPort=.*, storageInfo=lv=.*\):Failed to transfer .* to .* got
+     1     1 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.common.fica.FiCaSchedulerApp: Completed container: .* in state: RELEASED event:RELEASED
+     1     1 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Null container completed...
+     1     1 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler: Application attempt .* released container .* on node: host: .* #containers=.* with event: RELEASED
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.JobHistory: JobHistory Init
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryFileManager: Initializing Existing Jobs...
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryFileManager: Explicitly setting permissions to : .* rwxrwxrwt
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryFileManager: Deleting JobSummary file: .*
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.HistoryClientService: Instantiated HistoryClientService at .*
+     1     1 INFO org.apache.hadoop.mapreduce.v2.hs.CachedHistoryStorage: CachedHistoryStorage Init
+     1     1 INFO org.apache.hadoop.mapreduce.jobhistory.JobSummary: jobId=.* mean
+     1     1 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Image has not changed. Will not download image.
+     1     1 INFO org.apache.hadoop.hdfs.server.namenode.EditLogFileOutputStream: Nothing to flush
+     1     1 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: opWriteBlock .* received exception org.apache.hadoop.hdfs.server.datanode.ReplicaAlreadyExistsException: Block .* already exists in state FINALIZED and thus cannot be created.
+     1     1 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Starting CheckDiskError Thread
+     1     1 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: .* error processing WRITE_BLOCK operation src: .* dst: .* org.apache.hadoop.hdfs.server.datanode.ReplicaAlreadyExistsException: Block .* already exists in state FINALIZED and thus cannot be created.
+     1     1 INFO org.apache.hadoop.hdfs.server.datanode.DataNode: .* datanodeUuid=.*, infoPort=.*, infoSecurePort=.*, ipcPort=.*, storageInfo=lv=.*\) Starting thread to transfer .* to .*
+     1     1 INFO BlockStateChange: BLOCK\* ask .* to replicate .* to datanode\(s\) .*
+

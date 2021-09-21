@@ -1,0 +1,210 @@
+DEBUG [main] 2017-09-19 14:19:50,563 Schema.java:425 - Adding org.apache.cassandra.config.CFMetaData@66565121
+[
+	cfId=618f817b-005f-3678-b8a4-53f3930b8e86,
+	ksName=system,
+	cfName=size_estimates,
+	flags=[COMPOUND],
+	params=TableParams{
+		comment=per-table primary range size estimates,
+		read_repair_chance=0.0,
+		dclocal_read_repair_chance=0.0,
+		bloom_filter_fp_chance=0.01,
+		crc_check_chance=1.0,
+		gc_grace_seconds=0,
+		default_time_to_live=0,
+		memtable_flush_period_in_ms=3600000,
+		min_index_interval=128,
+		max_index_interval=2048,
+		speculative_retry=99PERCENTILE,
+		caching={
+			'keys' : 'ALL',
+			'rows_per_partition' : 'NONE'
+		},
+		compaction=CompactionParams{
+			class=org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,
+			options={
+				min_threshold=4,
+				max_threshold=32
+			}
+		},
+		compression=org.apache.cassandra.schema.CompressionParams@54491733,
+		extensions={},
+		cdc=false
+	},
+	comparator=comparator(org.apache.cassandra.db.marshal.UTF8Type,
+	org.apache.cassandra.db.marshal.UTF8Type,
+	org.apache.cassandra.db.marshal.UTF8Type),
+	partitionColumns=[[] | [mean_partition_size partitions_count]],
+	partitionKeyColumns=[keyspace_name],
+	clusteringColumns=[
+		table_name,
+		range_start,
+		range_end
+	],
+	keyValidator=org.apache.cassandra.db.marshal.UTF8Type,
+	columnMetadata=[
+		range_start,
+		table_name,
+		mean_partition_size,
+		keyspace_name,
+		partitions_count,
+		range_end
+	],
+	droppedColumns={},
+	triggers=[],
+	indexes=[]
+] to cfIdMap
+
+DEBUG [main] 2017-12-04 15:34:40,452 CommitLogReplayer.java:129 - Global replay position is CommitLogPosition(segmentId=-1, position=0) from columnfamilies
+	b4dbb7b4-dc49-3fb5-b3bf-ce6e434832ca:{
+		CommitLogPosition(segmentId=1506400821828, position=28)=CommitLogPosition(segmentId=1506400821828, position=43984),
+		CommitLogPosition(segmentId=1506401040390, position=28)=CommitLogPosition(segmentId=1506401040395, position=808919),
+		CommitLogPosition(segmentId=1506662348930, position=28)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=28)=CommitLogPosition(segmentId=1507195827396, position=30616202),
+		CommitLogPosition(segmentId=1507805704892, position=28)=CommitLogPosition(segmentId=1507805704963, position=9437804),
+		CommitLogPosition(segmentId=1511432041255, position=28)=CommitLogPosition(segmentId=1511432041256, position=5480237),
+		CommitLogPosition(segmentId=1511491158844, position=28)=CommitLogPosition(segmentId=1511491158847, position=26856029),
+		CommitLogPosition(segmentId=1511684705336, position=28)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=28)=CommitLogPosition(segmentId=1511684934483, position=31803109),
+		CommitLogPosition(segmentId=1511783906812, position=28)=CommitLogPosition(segmentId=1511783906821, position=18809154),
+		CommitLogPosition(segmentId=1512354400042, position=28)=CommitLogPosition(segmentId=1512354400042, position=9733342)
+	},
+	a5fc57fc-9d6c-3bfd-a3fc-01ad54686fea:{},
+	0359bc71-7123-3ee1-9a4a-b9dfb11fc125:{},
+	0ecdaa87-f8fb-3e60-88d1-74fb36fe5c0d:{},
+	618f817b-005f-3678-b8a4-53f3930b8e86:{
+		CommitLogPosition(segmentId=1506401040390, position=28)=CommitLogPosition(segmentId=1506401040395, position=808919),
+		CommitLogPosition(segmentId=1506662348930, position=28)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=28)=CommitLogPosition(segmentId=1507195827396, position=32199330),
+		CommitLogPosition(segmentId=1507805704892, position=28)=CommitLogPosition(segmentId=1507805704963, position=10031722),
+		CommitLogPosition(segmentId=1511432041255, position=28)=CommitLogPosition(segmentId=1511432041256, position=5480237),
+		CommitLogPosition(segmentId=1511491158844, position=28)=CommitLogPosition(segmentId=1511491158847, position=26856029),
+		CommitLogPosition(segmentId=1511684705336, position=28)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=28)=CommitLogPosition(segmentId=1511684934483, position=31803109),
+		CommitLogPosition(segmentId=1511783906812, position=28)=CommitLogPosition(segmentId=1511783906821, position=18809154),
+		CommitLogPosition(segmentId=1512354400042, position=28)=CommitLogPosition(segmentId=1512354400042, position=9733342)
+	},
+	b7b7f0c2-fd0a-3410-8c05-3ef614bb7c2d:{},
+	b7f2c108-78cd-3c80-9cd5-d609b2bd149c:{},
+	8826e8e9-e16a-3728-8753-3bc1fc713c25:{},
+	9786ac1c-dd58-3201-a7cd-ad556410c985:{
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	919a4bc5-7a33-3573-b03e-13fc3f68b465:{},
+	b0f22357-4458-3cdb-9631-c43e59ce3676:{},
+	5bc52802-de25-35ed-aeab-188eecebb090:{
+		CommitLogPosition(segmentId=1506401040390, position=2027)=CommitLogPosition(segmentId=1506401040390, position=2392059)
+	},
+	5a8b1ca8-6602-3f77-a045-9273d308917a:{
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	0feb57ac-311f-382f-ba6d-9024d305702f:{
+		CommitLogPosition(segmentId=1511783906812, position=1953)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	5a1ff267-ace0-3f12-8563-cfae6103c65e:{
+		CommitLogPosition(segmentId=1506400821828, position=28)=CommitLogPosition(segmentId=1506400821828, position=43984),
+		CommitLogPosition(segmentId=1506401040390, position=28)=CommitLogPosition(segmentId=1506401040395, position=808919),
+		CommitLogPosition(segmentId=1506662348930, position=28)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=28)=CommitLogPosition(segmentId=1507195827396, position=32199330),
+		CommitLogPosition(segmentId=1507805704892, position=28)=CommitLogPosition(segmentId=1507805704963, position=10031722),
+		CommitLogPosition(segmentId=1511432041255, position=28)=CommitLogPosition(segmentId=1511432041256, position=5480237),
+		CommitLogPosition(segmentId=1511491158844, position=28)=CommitLogPosition(segmentId=1511491158847, position=26856029),
+		CommitLogPosition(segmentId=1511684705336, position=28)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=28)=CommitLogPosition(segmentId=1511684934483, position=31803109),
+		CommitLogPosition(segmentId=1511783906812, position=28)=CommitLogPosition(segmentId=1511783906821, position=18809154),
+		CommitLogPosition(segmentId=1512354400042, position=28)=CommitLogPosition(segmentId=1512354400042, position=9733342)
+	},
+	0290003c-977e-397c-ac3e-fdfdc01d626b:{},
+	296e9c04-9bec-3085-827d-c17d3df2122a:{},
+	924c5587-2e3a-345b-b10c-12f37c1ba895:{
+		CommitLogPosition(segmentId=1511783906812, position=1953)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	4df70b66-6b05-3251-95a1-32b54005fd48:{
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)},
+	2666e205-73ef-38b3-90fe-fecf96e8f0c7:{}, 9f5c6374-d485-3229-9a0a-5094af9ad1e3:{},
+	11c5b620-a276-11e7-a05f-57d55e665fbc:{
+		CommitLogPosition(segmentId=1506401040390, position=217604)=CommitLogPosition(segmentId=1506401040395, position=808919)
+	},
+	45f5b360-24bc-3f83-a363-1034ea4fa697:{},
+	abac5682-dea6-31c5-b535-b3d6cffd0fb6:{
+		CommitLogPosition(segmentId=1506400821828, position=1451)=CommitLogPosition(segmentId=1506400821828, position=43902),
+		CommitLogPosition(segmentId=1506401040390, position=1945)=CommitLogPosition(segmentId=1506401040390, position=217604),
+		CommitLogPosition(segmentId=1506662348930, position=1953)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=1993)=CommitLogPosition(segmentId=1507195827387, position=2414891),
+		CommitLogPosition(segmentId=1507805704892, position=1459)=CommitLogPosition(segmentId=1507805704892, position=2412086),
+		CommitLogPosition(segmentId=1511432041255, position=1953)=CommitLogPosition(segmentId=1511432041255, position=2410107),
+		CommitLogPosition(segmentId=1511491158844, position=1953)=CommitLogPosition(segmentId=1511491158844, position=2410062),
+		CommitLogPosition(segmentId=1511684705336, position=1459)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=1945)=CommitLogPosition(segmentId=1511684934482, position=2410439),
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1451)=CommitLogPosition(segmentId=1512354400042, position=2409892)
+	},
+	deabd734-b99d-3b9c-92e5-fd92eb5abf14:{},
+	d1b675fe-2b50-3ca4-8e49-c0f81989dcad:{},
+	4b3c50a9-ea87-3d76-9101-6dbc9c38494a:{},
+	59dfeaea-8db2-3341-91ef-109974d81484:{},
+	55d76438-4e55-3f8b-9f6e-676d4af3976d:{},
+	37f71aca-7dc2-383b-a706-72528af04d4f:{},
+	3afbe79f-2194-31a7-add7-f5ab90d8ec9c:{},
+	24101c25-a2ae-3af7-87c1-b40ee1aca33f:{
+		CommitLogPosition(segmentId=1506400821828, position=1451)=CommitLogPosition(segmentId=1506400821828, position=43408),
+		CommitLogPosition(segmentId=1506401040390, position=1945)=CommitLogPosition(segmentId=1506401040390, position=217604),
+		CommitLogPosition(segmentId=1506662348930, position=1953)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=1993)=CommitLogPosition(segmentId=1507195827387, position=2415470),
+		CommitLogPosition(segmentId=1507805704892, position=1459)=CommitLogPosition(segmentId=1507805704892, position=2412086),
+		CommitLogPosition(segmentId=1511432041255, position=1953)=CommitLogPosition(segmentId=1511432041255, position=2410107),
+		CommitLogPosition(segmentId=1511491158844, position=1953)=CommitLogPosition(segmentId=1511491158844, position=2410062),
+		CommitLogPosition(segmentId=1511684705336, position=1459)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=1945)=CommitLogPosition(segmentId=1511684934482, position=2410439),
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1459)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	c5e99f16-8677-3914-b17e-960613512345:{},
+	6cad20f7-d4f5-3af2-b6e2-0da33c6c1f83:{},
+	3aa75225-4f82-350b-8d5c-430fa221fa0a:{},
+	5e7583b5-f3f4-3af1-9a39-b7e1d6f5f11f:{
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	7ad54392-bcdd-35a6-8417-4e047860b377:{
+		CommitLogPosition(segmentId=1506400821828, position=28)=CommitLogPosition(segmentId=1506400821828, position=43984),
+		CommitLogPosition(segmentId=1506401031641, position=28)=CommitLogPosition(segmentId=1506401031641, position=699),
+		CommitLogPosition(segmentId=1506401040390, position=28)=CommitLogPosition(segmentId=1506401040390, position=2392059),
+		CommitLogPosition(segmentId=1506662348930, position=28)=CommitLogPosition(segmentId=1506662348930, position=33794),
+		CommitLogPosition(segmentId=1507195827387, position=28)=CommitLogPosition(segmentId=1507195827387, position=37313),
+		CommitLogPosition(segmentId=1507805704892, position=28)=CommitLogPosition(segmentId=1507805704892, position=36345),
+		CommitLogPosition(segmentId=1511432041255, position=28)=CommitLogPosition(segmentId=1511432041255, position=34366),
+		CommitLogPosition(segmentId=1511491158844, position=28)=CommitLogPosition(segmentId=1511491158844, position=34288),
+		CommitLogPosition(segmentId=1511684705336, position=28)=CommitLogPosition(segmentId=1511684705336, position=33794),
+		CommitLogPosition(segmentId=1511684934482, position=28)=CommitLogPosition(segmentId=1511684934482, position=34698),
+		CommitLogPosition(segmentId=1511783906812, position=28)=CommitLogPosition(segmentId=1511783906812, position=34827),
+		CommitLogPosition(segmentId=1512354400042, position=28)=CommitLogPosition(segmentId=1512354400042, position=34134),
+		CommitLogPosition(segmentId=1512369270173, position=28)=CommitLogPosition(segmentId=1512369270173, position=1451)
+	},
+	759fffad-624b-3181-80ee-fa9a52d1f627:{},
+	5f2fbdad-91f1-3946-bd25-d5da3a5c35ec:{},
+	c539fcab-d65a-31d1-8133-d25605643ee3:{},
+	18a9c257-6a0c-3841-ba71-8cd529849fef:{},
+	afddfb9d-bc1e-3068-8056-eed6c302ba09:{
+		CommitLogPosition(segmentId=1506400821828, position=1451)=CommitLogPosition(segmentId=1506400821828, position=43408),
+		CommitLogPosition(segmentId=1506401040390, position=1945)=CommitLogPosition(segmentId=1506401040390, position=217604),
+		CommitLogPosition(segmentId=1506662348930, position=1953)=CommitLogPosition(segmentId=1506662348930, position=232187),
+		CommitLogPosition(segmentId=1507195827387, position=1993)=CommitLogPosition(segmentId=1507195827387, position=2414891),
+		CommitLogPosition(segmentId=1507805704892, position=1459)=CommitLogPosition(segmentId=1507805704892, position=2412086),
+		CommitLogPosition(segmentId=1511432041255, position=1953)=CommitLogPosition(segmentId=1511432041255, position=2410107),
+		CommitLogPosition(segmentId=1511491158844, position=1953)=CommitLogPosition(segmentId=1511491158844, position=2410062),
+		CommitLogPosition(segmentId=1511684705336, position=1459)=CommitLogPosition(segmentId=1511684705336, position=232187),
+		CommitLogPosition(segmentId=1511684934482, position=1945)=CommitLogPosition(segmentId=1511684934482, position=2410439),
+		CommitLogPosition(segmentId=1511783906812, position=1945)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1459)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	},
+	5582b59f-8e4e-35e1-b913-3acada51eb04:{},
+	96489b79-80be-3e14-a701-66a0b9159450:{
+		CommitLogPosition(segmentId=1511783906812, position=1953)=CommitLogPosition(segmentId=1511783906812, position=2410021),
+		CommitLogPosition(segmentId=1512354400042, position=1953)=CommitLogPosition(segmentId=1512354400042, position=2409900)
+	}
