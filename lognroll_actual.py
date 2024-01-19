@@ -2308,7 +2308,7 @@ def compute_slcpl(thelogs, logtem):
             for tok in selected[j]['template']:
                 str_j = str_j + token_d[tok]
 
-            lcs_set = lcs(str_i,str_j) 
+            lcs_set = lcs(str_i,str_j)  # get common character set
 
             #total_cpl +=  sum(len(x) for x in lcs_set)/len(lcs_set) # not used
             # sum length of all the set elements
@@ -2353,8 +2353,8 @@ def mark_matched_logs2(logs, mask, template, verbose=False):
 
         log = logs[i]
         first_len = len(log)
-        
-            log = log[:LOGLEN_THRESHOLD-3072] 
+        if len(log)>LOGLEN_THRESHOLD: # If log is too long, match time becomes too long. So, let's cut off.
+            log = log[:LOGLEN_THRESHOLD-3072] # seems 3072 is sufficient
             if verbose:
                 print "\n\033[0;32m"+template+"\033[0m"
                 print "\033[1;91m<"+str(i)+"/"+str(len(logs))+":"+"{0:.1f}".format(float(i*100)/float(len(logs)))+"%>\033[0m",log
@@ -2581,7 +2581,8 @@ if __name__ == '__main__':
                                                    
 
     if clean_mode:
-        os.remove(reuse_filename)
+        if os.path.exists(reuse_filename):
+            os.remove(reuse_filename)
 
     if os.path.exists(reuse_filename):
         print "Reusing reuse file ..."
