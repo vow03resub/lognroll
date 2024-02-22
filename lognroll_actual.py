@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#/usr/bin/python
 #-*- coding: utf-8 -*-
 
 import os
@@ -57,8 +57,8 @@ PATTERN_THRESHOLD=3 # there must be more than this number of values to say if th
 def sanitize_id(id):
     return id.strip().replace(" ", "")
 
-(_ADD, _DELETE, _INSERT) = range(3)
-(_ROOT, _DEPTH, _WIDTH) = range(3)
+(_ADD, _DELETE, _INSERT) = list(range(3))
+(_ROOT, _DEPTH, _WIDTH) = list(range(3))
 
 class Node:
 
@@ -105,10 +105,10 @@ class Node:
         return False
 
     def print_node(self):
-        print "* Node name:", self.name
-        print "     log template count:", len(self.log_templates)
-        print "     rep_logs count:", len(self.rep_logs)
-        print "     all_vect valid count:", sum(1 for x in self.all_vect if x>0)
+        print("* Node name:", self.name)
+        print("     log template count:", len(self.log_templates))
+        print("     rep_logs count:", len(self.rep_logs))
+        print("     all_vect valid count:", sum(1 for x in self.all_vect if x>0))
 
 class Tree:
 
@@ -153,9 +153,9 @@ class Tree:
     def show(self, position, level=_ROOT):
         queue = self[position].fpointer
         if level == _ROOT:
-            print("{0} [{1}] all_vect(-1)={2} len(log_templates)={3}".format(self[position].name, self[position].identifier, self[position].all_vect.count(-1), len(self[position].log_templates)))
+            print(("{0} [{1}] all_vect(-1)={2} len(log_templates)={3}".format(self[position].name, self[position].identifier, self[position].all_vect.count(-1), len(self[position].log_templates))))
         else:
-            print(" "*level*10, "{0} [{1}] all_vect(-1)={2} len(log_templates)={3}".format(self[position].name, self[position].identifier, self[position].all_vect.count(-1), len(self[position].log_templates)))
+            print((" "*level*10, "{0} [{1}] all_vect(-1)={2} len(log_templates)={3}".format(self[position].name, self[position].identifier, self[position].all_vect.count(-1), len(self[position].log_templates))))
         if self[position].expanded:
             level += 1
             for element in queue:
@@ -272,16 +272,16 @@ def split_by_delimiter(lvl, str_data, delim):
     #    print " "*lvl+"Removed empty token"+"\033[93;44m"+str(tokenized)+"\033[0m"
 
     # process each token
-    for i in reversed(range(0,len(tokenized))):
+    for i in reversed(list(range(0,len(tokenized)))):
 
         tok = tokenized[i]
         if tok==delim:
             continue
 
         if debug_mode and len(tok)==0:
-            print " "*lvl+"\033[0;31m"+"WARNING 742: zero length token detected -"+"\033[0m", str_data
-            print " "*(lvl+4), tokenized
-            print log
+            print(" "*lvl+"\033[0;31m"+"WARNING 742: zero length token detected -"+"\033[0m", str_data)
+            print(" "*(lvl+4), tokenized)
+            print(log)
             sys.exit(0)
             continue
 
@@ -358,8 +358,8 @@ def custom_split(log):
             if len(qstack)>0 and c in ["'","\""]:
                 schar = qstack.pop()
                 if c!=schar:
-                    print "ERROR 531", schar
-                    print log
+                    print("ERROR 531", schar)
+                    print(log)
                     sys.exit(0)
             if len(pstack)==0: # if stack becomes empty
                 middle_part = custom_split(log[spos+1:epos])
@@ -869,7 +869,7 @@ def uniquify_numbers(tlogs):
                         elif c in ['A','B','C','D','E','F']:
                             val[k]=['A','B','C','D','E','F'][randint(0,5)]
                         else:
-                            print "ERROR 235 c=",c
+                            print("ERROR 235 c=",c)
                             sys.exit(0)
                     tlogs[i][j] = "0x"+"".join(val)
                 elif p["type"]=="hexa2": 
@@ -891,7 +891,7 @@ def uniquify_numbers(tlogs):
                     '''
                     pass
                 else:
-                    print "ERROR 283"
+                    print("ERROR 283")
                     sys.exit(0)
 
 
@@ -979,15 +979,15 @@ def Determine_runlen_filter_word(token_d, tlogs, ftwords):
 
     # if there is only one word, just add it to the filter_words
     if len(token_d)==1:
-        return token_d.keys()[0]
+        return list(token_d.keys())[0]
     else:
-        if is_all_integer(token_d.keys()):
+        if is_all_integer(list(token_d.keys())):
             #print "    All integer keys detected!"
             return "*"
-        elif is_all_floatingpoint(token_d.keys()):
+        elif is_all_floatingpoint(list(token_d.keys())):
             #print "    All floating number keys detected!"
             return "*"
-        elif follows_format(token_d.keys()):
+        elif follows_format(list(token_d.keys())):
 #            #print "    Keys follow certain format!", token_d.keys()[0]
 #            # Insert newly detected custom pattern to the standalone_patterns dictionary
 #            pat = { "pattern": smask, "label":"~"+str(100+len(standalone_patterns))+"~"}
@@ -1022,49 +1022,49 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
     pv = compute_uniformity_pvalue(token_d)
     cr = 100.0*float(len(token_d))/float(tlen) # cardinality
     if debug_mode:
-        print "    \033[34;46mpv:"+str(pv)+"\033[0m \033[34;42mcr:"+str(cr)+"\033[0m"
+        print("    \033[34;46mpv:"+str(pv)+"\033[0m \033[34;42mcr:"+str(cr)+"\033[0m")
 
     # if there is only one word, just add it to the filter_words
     if len(token_d)==1:
         if debug_mode:
-            print "    \033[43;5m"+"STATIC STRING because there is only one value in the dictionary."+"\033[0m"
+            print("    \033[43;5m"+"STATIC STRING because there is only one value in the dictionary."+"\033[0m")
         #print "\033[43;5m"+"STATIC STRING because there is only one value in the dictionary."+"\033[0m"
-        return token_d.keys()[0], pv, cr
+        return list(token_d.keys())[0], pv, cr
 
     #if debug_mode:
     #    print "    Tokens in the dictionary:",token_d.keys()
 
     if any(w in token_d for w in [" ", "@","<",">","=","(",")"]):
         if debug_mode:
-            print "    \033[43;5m"+"STATIC STRING because special char (including space) is in the token keys."+"\033[0m"
+            print("    \033[43;5m"+"STATIC STRING because special char (including space) is in the token keys."+"\033[0m")
         #print "\033[43;5m"+"STATIC STRING because special char (including space) is in the token keys."+"\033[0m"
         return sorted(token_d, key=lambda k: token_d[k], reverse=True)[0], pv, cr
 
-    if are_all_numbers(token_d.keys()):
+    if are_all_numbers(list(token_d.keys())):
         if debug_mode:
-            print "    \033[43;5m"+"WILDCARD because they are all numbers."+"\033[0m"
+            print("    \033[43;5m"+"WILDCARD because they are all numbers."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because they are all numbers."+"\033[0m"
         return '*', pv, cr
-    if follows_format(token_d.keys()):
+    if follows_format(list(token_d.keys())):
         if debug_mode:
-            print "    \033[43;5m"+"WILDCARD because new pattern is detected."+"\033[0m"
+            print("    \033[43;5m"+"WILDCARD because new pattern is detected."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because new pattern is detected."+"\033[0m"
         return '*', pv, cr
     if pv>UNIFORM_THRESHOLD:
         if debug_mode:
-            print "    \033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m"
+            print("    \033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m"
         return '*', pv, cr
-    if are_all_hexa(token_d.keys()):
+    if are_all_hexa(list(token_d.keys())):
         if debug_mode:
-            print "    \033[43;5m"+"WILDCARD because they are all hexadecimal numbers."+"\033[0m"
+            print("    \033[43;5m"+"WILDCARD because they are all hexadecimal numbers."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because they are all hexadecimal numbers."+"\033[0m"
         return '*', pv, cr
 
     token =  sorted(token_d, key=lambda k: token_d[k], reverse=True)[0]
     if '~' in token:
         if debug_mode:
-            print "    \033[43;5m"+"WILDCARD because it is a known pattern."+"\033[0m"
+            print("    \033[43;5m"+"WILDCARD because it is a known pattern."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because it is a known pattern."+"\033[0m"
         return '*', pv, cr
 
@@ -1073,7 +1073,7 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
     #    return "*", pv, cr
 
     if debug_mode:
-        print "    \033[43;5m"+"STATIC STRING because it did not meet any condition for the wildcard."+"\033[0m"
+        print("    \033[43;5m"+"STATIC STRING because it did not meet any condition for the wildcard."+"\033[0m")
     #print "\033[43;5m"+"STATIC STRING because it did not meet any condition for the wildcard."+"\033[0m"
 
     return token, pv, cr
@@ -1089,13 +1089,13 @@ def read_log_files(flist, filter_str):
             if filter_str != None:
                 if filter_str not in log:
                     continue
-                print log.strip()
+                print(log.strip())
 
             log = " ".join(log.split())
             logs.append(log)
 
 
-    print "Total number of logs loaded:",len(logs)
+    print("Total number of logs loaded:",len(logs))
     return logs
 
 
@@ -1124,7 +1124,7 @@ def match_and_remove(tmpl,logs):
         del logs[i]
     del_count = before_removal - len(logs)
     if match_count!=del_count:
-        print "Error 263: match count and delete count mismatch!"
+        print("Error 263: match count and delete count mismatch!")
         sys.exit(0)
 
     elapsed = time.time() - tm_checkpt
@@ -1139,7 +1139,7 @@ def exist_match(log_template, logs):
         matched = re.match("^"+log_template+"$", logs[i])
         if matched!=None:
             if debug_mode:
-                print "\033[0;32mMatch found at "+str(i)+":", logs[i], "\033[0m "
+                print("\033[0;32mMatch found at "+str(i)+":", logs[i], "\033[0m ")
             return i
     return -1
 
@@ -1201,7 +1201,7 @@ def remove_log_template_matches(logs, logtem):
         # Remove any matched logs from the logs.
         before_removal = len(logs)
         alog = None
-        for j in reversed(range(0,len(logs))):
+        for j in reversed(list(range(0,len(logs)))):
             matched = re.match("^"+log_template+"$",logs[j])
             if matched!=None:
                 alog = logs[j]
@@ -1209,22 +1209,22 @@ def remove_log_template_matches(logs, logtem):
         removed_logs = before_removal - len(logs)
 
         if removed_logs==0:
-            print "ERROR: no matching logs found from the given template."
-            print "template:", log_template
+            print("ERROR: no matching logs found from the given template.")
+            print("template:", log_template)
             sys.exit(0)
 
         #print "\033[0;31m"+"["+format(i,'3d')+"]",format(len(logs),'5d'),format(removed_logs,'4d'),"\033[0m","\033[0;32m\""+logtem[i]+"\",\033[0m"
-        print "["+format(i,'3d')+"]",format(len(logs),'5d'),format(removed_logs,'4d'), logtem[i]
+        print("["+format(i,'3d')+"]",format(len(logs),'5d'),format(removed_logs,'4d'), logtem[i])
 
         sample_logs.append(alog)
-    print "Done removing logs using pre-populated log templates. Remaining logs:", len(logs)
+    print("Done removing logs using pre-populated log templates. Remaining logs:", len(logs))
     return sample_logs
 
 
 def build_random_index(data_len, sample_len):
     # create random index list
     if data_len<=sample_len:
-        numbers = range(0,data_len)
+        numbers = list(range(0,data_len))
     else:
         numbers = set()
         #while len(numbers)<sample_len:
@@ -1253,7 +1253,7 @@ def sample_by_length(logs, vect, ssize):
 
 
     for x in tlen_d:
-        print x, len(tlen_d[x])
+        print(x, len(tlen_d[x]))
 
     sys.exit(0)
 
@@ -1294,10 +1294,10 @@ def sample_by_token_length_and_space_count(logs, tlogs, vect):
     most_popular = sorted(logscore_d, key=lambda k: len(logscore_d[k]), reverse=True)[0]
 
     if debug_mode:
-        print "** Summary of log groups using characters **"
+        print("** Summary of log groups using characters **")
         for x in sorted(logscore_d, key=lambda k: len(logscore_d[k]), reverse=True)[:20]:
-            print "  For the key of",format(x,'5d')+",", format(len(logscore_d[x]), '5d'),"logs are grouped."
-        print "    ..."
+            print("  For the key of",format(x,'5d')+",", format(len(logscore_d[x]), '5d'),"logs are grouped.")
+        print("    ...")
 
     selected = []
     for log in logscore_d[most_popular]:
@@ -1327,14 +1327,14 @@ def sample_by_term_correlation(logs, ssize):
     toke_logs = do_tokenization(rand_logs)
     bow,bow_list = select_significant_terms(toke_logs)
     all_vect = build_term_vectors(bow_list,toke_logs)
-    corr_d = compute_term_correlation(all_vect, bow, bow_list, max(len(x) for x in bow.keys()))
+    corr_d = compute_term_correlation(all_vect, bow, bow_list, max(len(x) for x in list(bow.keys())))
     while corr_d==None:
         rand_logs = random_sample_logs(logs, ssize)
         toke_logs = do_tokenization(rand_logs)
         bow,bow_list = select_significant_terms(toke_logs)
         all_vect = build_term_vectors(bow_list,toke_logs)
-        corr_d = compute_term_correlation(all_vect, bow, bow_list, max(len(x) for x in bow.keys()))
-        print "corr_d None. Looping one more time."
+        corr_d = compute_term_correlation(all_vect, bow, bow_list, max(len(x) for x in list(bow.keys())))
+        print("corr_d None. Looping one more time.")
 
     term_groups = determine_term_groups(corr_d,bow,rand_logs)
     tb = sorted(term_groups, key=len, reverse=True)[0]
@@ -1458,7 +1458,7 @@ def select_significant_terms(tlog_data):
     elapsed = time.time() - tm_checkpt
     #print "{0:.3f}".format(elapsed),"Creating bag-of-words took"
     if debug_mode:
-        print "The length of bag-of-words list:",len(wl)
+        print("The length of bag-of-words list:",len(wl))
     return wd, wl
 
 
@@ -1480,7 +1480,7 @@ def build_term_vectors(wl,tlog_data):
     elapsed = time.time() - tm_checkpt
     #print "{0:.3f}".format(elapsed),"Creating indicator vectors for all words"
     if debug_mode:
-        print "Length of vectors:",len(vectors)
+        print("Length of vectors:",len(vectors))
     return vectors
 
 
@@ -1533,10 +1533,10 @@ def compute_term_correlation(vect, bow, bow_list, max_word_length):
         clen += len(correlation_dict[word])
         #print "        [compute_term_correlation] length of "+word, len(correlation_dict[word]), correlation_dict[word]
     if clen==len(correlation_dict):
-        print "WARNING 219: correlation_dict is empty"
+        print("WARNING 219: correlation_dict is empty")
         #for t in log_templates:
         #    print "\033[0;43m"+str(t["count"])+"\033[0m",t["template"]
-        print "Total number of templates:",len(log_templates)
+        print("Total number of templates:",len(log_templates))
         return None
 
     #print print_correlation(bow_list,vect,"Stopping","Exit")
@@ -1548,7 +1548,7 @@ def display_term_groups(correlation_dict, word_dict):
     tm_checkpt = time.time()
     tgrp = [] # term group
     circ = []
-    max_word_length = max(len(x) for x in word_dict.keys())
+    max_word_length = max(len(x) for x in list(word_dict.keys()))
     for word in sorted(correlation_dict, key=lambda k: word_dict[k], reverse=True):
         # if word is already part of any of the previous groups, skip it
         is_member = False
@@ -1572,13 +1572,13 @@ def display_term_groups(correlation_dict, word_dict):
             if eligible: # the word itself is added automatically as the first member here because correlation_dict has itself
                 circ.append(term)
         if len(circ)>=2:
-            print word, " "*(max_word_length-len(word)), format(len(correlation_dict[word]),'3d'), format(len(circ),'3d'), circ
+            print(word, " "*(max_word_length-len(word)), format(len(correlation_dict[word]),'3d'), format(len(circ),'3d'), circ)
             tgrp.append(sorted(circ))
         # circle members determined at this point
         circ = []
     elapsed = time.time() - tm_checkpt
     if debug_mode:
-        print "Displaying term groups took", elapsed, "seconds"
+        print("Displaying term groups took", elapsed, "seconds")
     return
 
 
@@ -1587,7 +1587,7 @@ def determine_term_groups(correlation_dict, word_dict, logs):
     tm_checkpt = time.time()
     tgrp = [] # term group
     circ = []
-    max_word_length = max(len(x) for x in word_dict.keys())
+    max_word_length = max(len(x) for x in list(word_dict.keys()))
     for word in sorted(correlation_dict, key=lambda k: word_dict[k], reverse=True):
         # if word is already part of any of the previous groups, skip it
         is_member = False
@@ -1614,7 +1614,7 @@ def determine_term_groups(correlation_dict, word_dict, logs):
             # counting inclusion of all terms is very costly
             #print word, " "*(max_word_length-len(word)), format(len(correlation_dict[word]),'3d'), format(len(circ),'3d'), format(multiple_term_inclusion_count(logs,circ),'5d'), circ
             if debug_mode:
-                print word, " "*(max_word_length-len(word)), format(len(correlation_dict[word]),'3d'), format(len(circ),'3d'), circ
+                print(word, " "*(max_word_length-len(word)), format(len(correlation_dict[word]),'3d'), format(len(circ),'3d'), circ)
             tgrp.append(sorted(circ))
         # circle members determined at this point
         circ = []
@@ -1906,13 +1906,13 @@ def exist_partial_match2(rlogs, fwords, fmask):
                 break
         if add_ok:
             survived.append(tlog)
-    print "    ",len(survived)
+    print("    ",len(survived))
     return survived
  
 def exist_partial_match(rlogs, rvect, fwords, fmask):
-    print "Entering exist_partial_match."
-    print "Filter words:",fwords
-    print "Filter masks:",fmask
+    print("Entering exist_partial_match.")
+    print("Filter words:",fwords)
+    print("Filter masks:",fmask)
 
     for k in range(0,len(rlogs)):
         if rvect[k]==-1: 
@@ -1980,11 +1980,11 @@ def construct_candidate_log_templates(input_logs, rep_logs):
         filtered_logs = do_filtering(input_logs, valid_mask, filter_words, filter_mask)
 
         if debug_mode:
-            print "XXXXXXXX check 001"
-            raw_input("\033[0;35m->Press ENTER to continue filtering ...\033[0m")
+            print("XXXXXXXX check 001")
+            input("\033[0;35m->Press ENTER to continue filtering ...\033[0m")
 
         if debug_mode:
-            print "Updating column_cnt from", column_cnt,"to",max(len(x) for x in filtered_logs)
+            print("Updating column_cnt from", column_cnt,"to",max(len(x) for x in filtered_logs))
             #for x in filtered_logs:
             #    print "    ",x
         column_cnt = max(len(x) for x in filtered_logs)
@@ -2015,7 +2015,7 @@ def construct_candidate_log_templates(input_logs, rep_logs):
             all_column_dict[tpos] = column_dict
 
             if len(column_dict)==0: 
-                print "ERROR 832: No token values collected into the dictionary. Perhaps log's length ran out."
+                print("ERROR 832: No token values collected into the dictionary. Perhaps log's length ran out.")
                 sys.exit(0)
 
             runlength_token = sorted(column_dict, key=lambda k: column_dict[k], reverse=True)[0]
@@ -2043,7 +2043,7 @@ def construct_candidate_log_templates(input_logs, rep_logs):
                 filter_words[tpos] = runlength_token
 
                 if debug_mode:
-                    print "\033[0;36mAdding single-valued column to the filter\033[0m [tpos:"+str(tpos)+"]", "->"+runlength_token+"<-", runlength
+                    print("\033[0;36mAdding single-valued column to the filter\033[0m [tpos:"+str(tpos)+"]", "->"+runlength_token+"<-", runlength)
                 #print "\033[0;36mAdding single-valued column to the filter\033[0m [tpos:"+str(tpos)+"]", "->"+runlength_token+"<-", runlength
 
                 token_added_order.append(runlength_token)
@@ -2051,44 +2051,44 @@ def construct_candidate_log_templates(input_logs, rep_logs):
 
         if 0 not in filter_mask: 
             if debug_mode:
-                print "Exiting loop since all filters are determined.", filter_mask
-                print "->filter_words:", filter_words
+                print("Exiting loop since all filters are determined.", filter_mask)
+                print("->filter_words:", filter_words)
             break
 
         if max_runlen_pos==-1: 
-            print "ERROR: max column not selected!!!"
+            print("ERROR: max column not selected!!!")
             sys.exit(0)
 
         if max_runlen_pos>=0: 
 
             if debug_mode:
-                print "max_column:"+str(max_runlen_pos)+",\033[35;47mCalling determine_filter_word ...\033[0m"
+                print("max_column:"+str(max_runlen_pos)+",\033[35;47mCalling determine_filter_word ...\033[0m")
             target_dict = all_column_dict[max_runlen_pos] 
             filled = float(sum(filter_mask))/float(len(filter_mask)) 
             new_fword, pv, cr = determine_filter_word(target_dict, len(filtered_logs), filled)
             #print "{0:.5f}".format(pv), "{0:.5f}".format(cr), "---->"+new_fword
 
             if debug_mode:
-                print "max_column:"+str(max_runlen_pos)+",\033[35;47mdetermine_filter_word returned:\033[0m", "->"+new_fword+"<-"
-                print "*** Max token from each column ***"
+                print("max_column:"+str(max_runlen_pos)+",\033[35;47mdetermine_filter_word returned:\033[0m", "->"+new_fword+"<-")
+                print("*** Max token from each column ***")
                 for h in all_column_dict: # h is a column position
                     d = all_column_dict[h]
                     for n in sorted(d, key=lambda k: d[k], reverse=True):
-                        print "["+str(h)+"]",d[n], "\t","->"+n+"<-"
+                        print("["+str(h)+"]",d[n], "\t","->"+n+"<-")
                         break
             if debug_mode and ' ' not in target_dict and '=' not in target_dict:
-                print "------------------------------------------------------------"
-                print "[Column:"+str(max_runlen_pos)+"]", "\033[1;91mpval:",pv,"\033[0m", "Cardinality:", "{0:.2f}".format(cr),"%"
-                print "------------------------------------------------------------"
-                print "num  |   count   |       token      "
-                print "------------------------------------------------------------"
+                print("------------------------------------------------------------")
+                print("[Column:"+str(max_runlen_pos)+"]", "\033[1;91mpval:",pv,"\033[0m", "Cardinality:", "{0:.2f}".format(cr),"%")
+                print("------------------------------------------------------------")
+                print("num  |   count   |       token      ")
+                print("------------------------------------------------------------")
                 # print each line
                 cnt = 1
                 for n in sorted(target_dict, key=lambda k: target_dict[k], reverse=True):
-                    print "["+str(cnt)+"]\t",target_dict[n], "\t\t","->"+n+"<-"
+                    print("["+str(cnt)+"]\t",target_dict[n], "\t\t","->"+n+"<-")
                     cnt += 1
                     if cnt>40:
-                        print "..."
+                        print("...")
                         break
 
             if new_fword=="*":
@@ -2130,26 +2130,26 @@ def construct_candidate_log_templates(input_logs, rep_logs):
             #print "\033[0;35mNew filter word\033[0m [tpos:"+str(max_runlen_pos)+"]", "=>"+new_fword+"<="
 
         if debug_mode:
-            print "Current column_cnt:",column_cnt
-            print "Max runlength percent:", "{0:.2f}".format(max_runlen_pct),"%"
-            print "Max runlength percent position:", max_runlen_pos
-            print "\033[1;94mMax runlength percent word :", "->"+filter_words[max_runlen_pos]+"<-\033[0m"
-            print "sum of valid_mask:", sum(valid_mask)
-            print "filter_mask(sum:"+str(sum(filter_mask))+"/"+str(len(filter_mask))+"):","".join(str(x) for x in filter_mask)
-            print "Filtering logs using filter_words:",filter_words, len(filter_words)
+            print("Current column_cnt:",column_cnt)
+            print("Max runlength percent:", "{0:.2f}".format(max_runlen_pct),"%")
+            print("Max runlength percent position:", max_runlen_pos)
+            print("\033[1;94mMax runlength percent word :", "->"+filter_words[max_runlen_pos]+"<-\033[0m")
+            print("sum of valid_mask:", sum(valid_mask))
+            print("filter_mask(sum:"+str(sum(filter_mask))+"/"+str(len(filter_mask))+"):","".join(str(x) for x in filter_mask))
+            print("Filtering logs using filter_words:",filter_words, len(filter_words))
 
             #print "Added order:", "\033[1;95m|\033[0m".join(token_added_order)
             #print "Cardinality order:", "\033[1;95m|\033[0m".join(count_added_order)
-            print "\033[1;95mToken list in the added order:(The number is the count of unique tokens.)\033[0m"
+            print("\033[1;95mToken list in the added order:(The number is the count of unique tokens.)\033[0m")
             for w in range(0,len(token_added_order)):
-                print "        ", format(count_added_order[w],'3d'),token_added_order[w]
+                print("        ", format(count_added_order[w],'3d'),token_added_order[w])
 
-            raw_input("\033[0;35m->Press ENTER to continue filtering ...\033[0m")
-            print " "
+            input("\033[0;35m->Press ENTER to continue filtering ...\033[0m")
+            print(" ")
 
         #print "filter_vect(sum:"+str(sum(filter_mask))+"/"+str(len(filter_mask))+"):","".join(str(x) for x in filter_mask)
         if debug_mode:
-            print "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+            print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
     # END of inner while loop
 
     elapsed = time.time() - tm_checkpt
@@ -2255,10 +2255,10 @@ def compute_slcpl(thelogs, logtem):
         SL_sum += (static_length * t['count'])
         total_log_count += t['count']
     if total_log_count==0:
-        print "Error: total_log_count 0"
+        print("Error: total_log_count 0")
         sys.exit(0)
     SL = float(SL_sum)/float(total_log_count) 
-    print "\033[0;32mAverage weighted SL:", SL, "\033[0m"
+    print("\033[0;32mAverage weighted SL:", SL, "\033[0m")
 
     total_cpl = 0
     weighted_cpl_sum = 0.0
@@ -2273,18 +2273,18 @@ def compute_slcpl(thelogs, logtem):
             basechar="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+[]\{}|;:,./<>?`~=-ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■"
 
             if len(selected[i]['template'])>len(basechar):
-                print "\n\n    Number of tokens in the template:",len(selected[i]['template'])
-                print "    Length of basechar:",len(basechar)
-                print "    "+str(selected[i]['template'])
-                print "    \033[1;31mTemplate too long. Truncating to match the basechar length.\033[0m"
+                print("\n\n    Number of tokens in the template:",len(selected[i]['template']))
+                print("    Length of basechar:",len(basechar))
+                print("    "+str(selected[i]['template']))
+                print("    \033[1;31mTemplate too long. Truncating to match the basechar length.\033[0m")
                 selected[i]['template'] = selected[i]['template'][0:len(basechar)-1]
                 #sys.exit(0)
 
             if len(selected[j]['template'])>len(basechar):
-                print "\n\n    Number of tokens in the template:",len(selected[j]['template'])
-                print "    Length of basechar:",len(basechar)
-                print "    "+str(selected[j]['template'])
-                print "    \033[1;31mTemplate too long. Truncating to match the basechar length.\033[0m"
+                print("\n\n    Number of tokens in the template:",len(selected[j]['template']))
+                print("    Length of basechar:",len(basechar))
+                print("    "+str(selected[j]['template']))
+                print("    \033[1;31mTemplate too long. Truncating to match the basechar length.\033[0m")
                 selected[j]['template'] = selected[j]['template'][0:len(basechar)-1]
                 #sys.exit(0)
 
@@ -2298,7 +2298,7 @@ def compute_slcpl(thelogs, logtem):
                     n+=1
 
             if n>len(basechar):
-                print "\033[0;32mERROR: Not enough char set!!", n, len(basechar), "\033[0m"
+                print("\033[0;32mERROR: Not enough char set!!", n, len(basechar), "\033[0m")
                 sys.exit(0)
 
             str_i=""
@@ -2327,7 +2327,7 @@ def compute_slcpl(thelogs, logtem):
         sys.stdout.write('\r'+"Processed "+"{0:.1f}".format(100.0*float(i)/float(len(selected)))+"%")
         sys.stdout.flush()
 
-    print " "
+    print(" ")
     if len(selected)>1:
         CPL = float(total_cpl)/float(len(selected))/float(len(selected)-1)
     else:
@@ -2356,12 +2356,12 @@ def mark_matched_logs2(logs, mask, template, verbose=False):
         if len(log)>LOGLEN_THRESHOLD: # If log is too long, match time becomes too long. So, let's cut off.
             log = log[:LOGLEN_THRESHOLD-3072] # seems 3072 is sufficient
             if verbose:
-                print "\n\033[0;32m"+template+"\033[0m"
-                print "\033[1;91m<"+str(i)+"/"+str(len(logs))+":"+"{0:.1f}".format(float(i*100)/float(len(logs)))+"%>\033[0m",log
-                print first_len,"->",len(log)
+                print("\n\033[0;32m"+template+"\033[0m")
+                print("\033[1;91m<"+str(i)+"/"+str(len(logs))+":"+"{0:.1f}".format(float(i*100)/float(len(logs)))+"%>\033[0m",log)
+                print(first_len,"->",len(log))
         else:
             if verbose:
-                print first_len
+                print(first_len)
 
         #if len(log)==LOGLEN_THRESHOLD:
         #    new_tem=template.replace(".*","\S*")
@@ -2513,7 +2513,7 @@ if __name__ == '__main__':
         args = parser.parse_args()
         openfile_list = args.logfile
         if len(openfile_list)>1:
-            print "Specify only one log file. Currently",len(openfile_list),"are given."
+            print("Specify only one log file. Currently",len(openfile_list),"are given.")
             sys.exit(0)
 
         debug_mode = False
@@ -2533,29 +2533,29 @@ if __name__ == '__main__':
         else:
             prev_reuse_logfilename = "-" 
 
-        print "** Previous log file:",prev_reuse_logfilename
-        print "**    Input log file:",openfile_list[0].name
+        print("** Previous log file:",prev_reuse_logfilename)
+        print("**    Input log file:",openfile_list[0].name)
 
         clean_mode = False
         if args.clean==False:
             if prev_reuse_logfilename==openfile_list[0].name:
                 clean_mode = False
-                print "\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m"
+                print("\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m")
             else:
-                print "\033[31;91mAlthough you wanted FAST REUSE mode, the input log file is different from the previous run. Forcing clean mode ... \033[0m"
-                print "\033[37;101mClean (slow) mode\033[0m"
+                print("\033[31;91mAlthough you wanted FAST REUSE mode, the input log file is different from the previous run. Forcing clean mode ... \033[0m")
+                print("\033[37;101mClean (slow) mode\033[0m")
                 clean_mode = True
                 os.remove(reuse_logfilename)
                 pickle.dump(openfile_list[0].name, open(reuse_logfilename,"w"))
         else:
-            print "\033[37;101mClean (slow) mode\033[0m"
+            print("\033[37;101mClean (slow) mode\033[0m")
             clean_mode = bool(args.clean)
 
 
-    except Exception, e:
-        print('Error: %s' % str(e))
+    except Exception as e:
+        print(('Error: %s' % str(e)))
 
-    print "Loading all logs into memory."
+    print("Loading all logs into memory.")
     raw_logs = read_log_files( openfile_list, None ) 
 
 #    cur_node = pickle.load(open("cur_node.bin","rb"))
@@ -2569,14 +2569,14 @@ if __name__ == '__main__':
 
     old_log_count = len(raw_logs)
     rep_logs = remove_log_template_matches(raw_logs, prepopulated_log_templates)
-    print "=================================================================================================================================="
-    print "Old Log count:",old_log_count
-    print "New Log count:",len(raw_logs)
-    print "Prepopulated log template count:", len(prepopulated_log_templates)
-    print "Representative logs count:", len(rep_logs)
+    print("==================================================================================================================================")
+    print("Old Log count:",old_log_count)
+    print("New Log count:",len(raw_logs))
+    print("Prepopulated log template count:", len(prepopulated_log_templates))
+    print("Representative logs count:", len(rep_logs))
     log_templates = copy.deepcopy(prepopulated_log_templates)
 
-    print "Preprocessing logs..."
+    print("Preprocessing logs...")
     all_logs = preprocess_known_patterns(raw_logs) 
                                                    
 
@@ -2585,19 +2585,19 @@ if __name__ == '__main__':
             os.remove(reuse_filename)
 
     if os.path.exists(reuse_filename):
-        print "Reusing reuse file ..."
+        print("Reusing reuse file ...")
         all_tlogs = pickle.load(open(reuse_filename,"rb"))
     else:
-        print "Sequence number:", seqnum
-        print "Tokenizing all logs."
+        print("Sequence number:", seqnum)
+        print("Tokenizing all logs.")
         all_tlogs = do_tokenization(all_logs)
-        print "Done tokenizing.", len(all_logs)
+        print("Done tokenizing.", len(all_logs))
 
         #apply_all_patterns(all_tlogs)
-        print "Rearranging numbers of known patterns to make values unique ..."
+        print("Rearranging numbers of known patterns to make values unique ...")
         uniquify_numbers(all_tlogs)
-        print "Done rearranging values."
-        print "len(all_tlogs):",len(all_tlogs)
+        print("Done rearranging values.")
+        print("len(all_tlogs):",len(all_tlogs))
 
         pickle.dump(all_tlogs, open(reuse_filename,"wb"))
 
@@ -2623,17 +2623,17 @@ if __name__ == '__main__':
         if len(sampled_logs)==0:
             break
         if debug_mode:
-            print "\033[93;100mSampled_logs size:", len(sampled_logs),"\033[0m "
+            print("\033[93;100mSampled_logs size:", len(sampled_logs),"\033[0m ")
             for i in range(0,len(sampled_logs)):
-                print "    [Sampled]", sampled_logs[i]
-                print "             ", "".join(tokenized_logs[i])
+                print("    [Sampled]", sampled_logs[i])
+                print("             ", "".join(tokenized_logs[i]))
 
         #tokenized_logs = do_tokenization(sampled_logs)
         #sampled_logs,tokenized_logs = sample_by_term_correlation(all_logs, RANDOM_SAMPLE_SIZE)
 
         if debug_mode:
-            print "Number of logs:",len(sampled_logs)
-            print "Number of tokenized logs:",len(tokenized_logs)
+            print("Number of logs:",len(sampled_logs))
+            print("Number of tokenized logs:",len(tokenized_logs))
 
         #apply_all_patterns(tokenized_logs)
         replace_known_patterns(tokenized_logs)
@@ -2658,11 +2658,11 @@ if __name__ == '__main__':
 
         if len(candidate_set)>tval:
             for log_template in candidate_set:
-                print "\033[93;100mCandidate:"+"\033[0m \033[90;103m", log_template, "\033[0m "
+                print("\033[93;100mCandidate:"+"\033[0m \033[90;103m", log_template, "\033[0m ")
             
                 conflicted = exist_match(log_template, cur_node.rep_logs)
                 if conflicted>=0:
-                    print "ERROR<1>: log_template overlaps with one of the already-found log templates."
+                    print("ERROR<1>: log_template overlaps with one of the already-found log templates.")
                     sys.exit(0)
 
                 new_name = 'n'+str(tree.serial)
@@ -2681,18 +2681,18 @@ if __name__ == '__main__':
                 # Mark matched logs from all_logs using new log template. 
                 removed_count = mark_matched_logs(all_logs, new_node.all_vect, new_node.rep_logs, log_template, len(new_node.log_templates))
                 if removed_count==0:
-                    print "\n\033[1;94mWARNING[1]:\033[0m No logs removed from the template!"
-                    print "TEMPLATE->",log_template
-                    print "Remaining logs:", len(all_logs)-sum(1 for x in cur_node.all_vect if x>0)
-                    print "Log template count:", len(cur_node.log_templates)
+                    print("\n\033[1;94mWARNING[1]:\033[0m No logs removed from the template!")
+                    print("TEMPLATE->",log_template)
+                    print("Remaining logs:", len(all_logs)-sum(1 for x in cur_node.all_vect if x>0))
+                    print("Log template count:", len(cur_node.log_templates))
                     for p in standalone_patterns:
-                        print p['label'],p['pattern']
+                        print(p['label'],p['pattern'])
                     sys.exit(0)
                     break
-                print "["+format(len(new_node.log_templates),'3d')+"]", format(new_node.all_vect.count(-1),'5d'), format(removed_count,'4d'), log_template
+                print("["+format(len(new_node.log_templates),'3d')+"]", format(new_node.all_vect.count(-1),'5d'), format(removed_count,'4d'), log_template)
                 # attach new candidate log templates
                 new_node.log_templates.append({"count":removed_count,"template":log_template})
-                print "\033[1;34m",tree.show("top"),"...\033[0m"
+                print("\033[1;34m",tree.show("top"),"...\033[0m")
         else: 
 
             log_template = candidate_set[0]
@@ -2716,15 +2716,15 @@ if __name__ == '__main__':
                                 break
                     if diff_count==1:
                         if not printed:
-                            print "**\033[0;32m", "".join(tok_candi), "\033[0m"
+                            print("**\033[0;32m", "".join(tok_candi), "\033[0m")
                             printed = True
-                        print "**\033[0;35m", "".join(tok_logtm), "\033[0m"
+                        print("**\033[0;35m", "".join(tok_logtm), "\033[0m")
 
-                        print "   Token to update:", tok_candi[diff_loc]
-                        print "   Token to update:", tok_logtm[diff_loc]
+                        print("   Token to update:", tok_candi[diff_loc])
+                        print("   Token to update:", tok_logtm[diff_loc])
                         tok_logtm[diff_loc]=".*"
                         log_template = escape_log_template("".join(tok_logtm))
-                        print "   New log_template:", log_template
+                        print("   New log_template:", log_template)
                         cur_node.log_templates[i]=None
                         cur_node.rep_logs[i]=None
 
@@ -2741,12 +2741,12 @@ if __name__ == '__main__':
 
             removed_count = mark_matched_logs(all_logs, cur_node.all_vect, cur_node.rep_logs, log_template, len(cur_node.log_templates))
             if removed_count==0:
-                print "\n\033[1;95mWARNING[2]:\033[0m \033[1;31mNo logs removed from the template!", "\033[0m"
-                print "   *TEMPLATE->",log_template
-                print "   *Remaining logs:", len(all_logs)-sum(1 for x in cur_node.all_vect if x>0)
-                print "   *Log template count:", len(cur_node.log_templates)
+                print("\n\033[1;95mWARNING[2]:\033[0m \033[1;31mNo logs removed from the template!", "\033[0m")
+                print("   *TEMPLATE->",log_template)
+                print("   *Remaining logs:", len(all_logs)-sum(1 for x in cur_node.all_vect if x>0))
+                print("   *Log template count:", len(cur_node.log_templates))
                 for p in standalone_patterns:
-                    print "   ",p['label'],p['pattern']
+                    print("   ",p['label'],p['pattern'])
                 sys.exit(0)
                 continue
                 #break
@@ -2760,7 +2760,7 @@ if __name__ == '__main__':
             #    print "["+format(len(cur_node.log_templates),'3d')+"]", format(cur_node.all_vect.count(-1),'5d'), format(removed_count,'4d'), log_template
             #print "["+format(len(cur_node.log_templates),'3d')+"]", format(cur_node.all_vect.count(-1),'5d'), format(removed_count,'4d'), log_template
             #print "\""+re.sub("\"","\\\"",log_template)+"\","
-            print len(cur_node.log_templates), removed_count, "\033[0;34m"+log_template+"\033[0m"
+            print(len(cur_node.log_templates), removed_count, "\033[0;34m"+log_template+"\033[0m")
 
             #sys.exit(0)
 
@@ -2774,10 +2774,10 @@ if __name__ == '__main__':
             cur_node = tree.find_inprogress_node()
             if cur_node==None:
                 break
-            print "\033[1;94m=> Switching to ",cur_node.name,"\033[0m"
+            print("\033[1;94m=> Switching to ",cur_node.name,"\033[0m")
 
         if debug_mode:
-            raw_input("\033[1;94m->Press ENTER to continue ...\033[0m")
+            input("\033[1;94m->Press ENTER to continue ...\033[0m")
 
         #print "============================================================================================================="
         #raw_input("\033[1;94m->Press ENTER to continue ...\033[0m")
@@ -2785,22 +2785,22 @@ if __name__ == '__main__':
     # END of outer while loop - done removing all the logs
     runtime_elapsed = time.time() - runtime_checkpt
 
-    print "{0:8.3f}".format(tm001), "Apply all patterns"
-    print "{0:8.3f}".format(tm002), "Apply new patterns"
-    print "{0:8.3f}".format(tm003), "Random sampling logs"
-    print "{0:8.3f}".format(tm006), "Sampling by split token length"
-    print "{0:8.3f}".format(tm007), "Sampling by signature made of special characters"
-    print "{0:8.3f}".format(tm008), "Sampling by term correlation analysis"
-    print "{0:8.3f}".format(tm009), "Sampling by term filtering"
-    print "{0:8.3f}".format(tm010), "Replenish term band"
-    print "{0:8.3f}".format(tm004), "Tokenizing logs"
-    print "{0:8.3f}".format(tm005), "Filtering all columns"
-    print "{0:8.3f}".format(tm011), "Match and remove logs"
-    print "{0:8.3f}".format(runtime_elapsed-tm001-tm002-tm003-tm004-tm005-tm006-tm007-tm008-tm009-tm010-tm011), "Unaccounted"
-    print "{0:8.3f}".format(runtime_elapsed), "\033[0;103mEnd-to-end runtime\033[0m"
+    print("{0:8.3f}".format(tm001), "Apply all patterns")
+    print("{0:8.3f}".format(tm002), "Apply new patterns")
+    print("{0:8.3f}".format(tm003), "Random sampling logs")
+    print("{0:8.3f}".format(tm006), "Sampling by split token length")
+    print("{0:8.3f}".format(tm007), "Sampling by signature made of special characters")
+    print("{0:8.3f}".format(tm008), "Sampling by term correlation analysis")
+    print("{0:8.3f}".format(tm009), "Sampling by term filtering")
+    print("{0:8.3f}".format(tm010), "Replenish term band")
+    print("{0:8.3f}".format(tm004), "Tokenizing logs")
+    print("{0:8.3f}".format(tm005), "Filtering all columns")
+    print("{0:8.3f}".format(tm011), "Match and remove logs")
+    print("{0:8.3f}".format(runtime_elapsed-tm001-tm002-tm003-tm004-tm005-tm006-tm007-tm008-tm009-tm010-tm011), "Unaccounted")
+    print("{0:8.3f}".format(runtime_elapsed), "\033[0;103mEnd-to-end runtime\033[0m")
 
-    print "\033[1;34m",tree.show("top"),"...\033[0m"
-    print " "
+    print("\033[1;34m",tree.show("top"),"...\033[0m")
+    print(" ")
 
     temp_list=[]
     for cur_node in tree.nodes:
@@ -2814,7 +2814,7 @@ if __name__ == '__main__':
     mycount=0
     for t in sorted(temp_list, key=lambda k: k['count'], reverse=True):
         #print mycount,"\033[1;103m["+format(t["count"],'4d')+"]\033[0m\n","\""+t["template"]+"\","
-        print t["count"],t["template"]
+        print(t["count"],t["template"])
         mycount+=1
 
     sys.exit(0)
@@ -2861,7 +2861,7 @@ if __name__ == '__main__':
             sum_matched=0
             for t in sorted(xlog_templates,reverse=True):
                 sum_matched += int(t[0])
-            print "    Sum of matched logs:",sum_matched
+            print("    Sum of matched logs:",sum_matched)
 
             for t in sorted(xlog_templates, reverse=True):
                 # first, build a list of index to delete
@@ -2891,13 +2891,13 @@ if __name__ == '__main__':
                 if del_count>0:
                     #selected.append(t[1])
                     selected.append({"count":del_count,"template":str(t[1])})
-                    print "\033[33;31m",format(del_count,'5d'), format(int(t[0]),'5d'), t[1], "\033[0m"
+                    print("\033[33;31m",format(del_count,'5d'), format(int(t[0]),'5d'), t[1], "\033[0m")
                 else:
-                    print "\033[33;32m",format(del_count,'5d'), format(int(t[0]),'5d'), t[1], "\033[0m"
+                    print("\033[33;32m",format(del_count,'5d'), format(int(t[0]),'5d'), t[1], "\033[0m")
     
-            print "   ",len(mylogs),"logs remaining."
-            print "    Initial template count:", len(xlog_templates)
-            print "    Selected template count:", len(selected)
+            print("   ",len(mylogs),"logs remaining.")
+            print("    Initial template count:", len(xlog_templates))
+            print("    Selected template count:", len(selected))
 
 
 
@@ -2905,8 +2905,8 @@ if __name__ == '__main__':
             #SL,CPL = compute_slcpl(mylogs, cur_node.log_templates)
             SL,CPL = compute_slcpl(mylogs, selected)
 
-            print "SL= "+str(SL)
-            print "CPL= "+str(CPL)
+            print("SL= "+str(SL))
+            print("CPL= "+str(CPL))
             #print "\033[1;94mscore= "+str(SL*1.0/(1.0+CPL)), "\033[0m"
-            print "\033[1;94mscore= "+str(SL-CPL), "\033[0m"
-            print sum_matched, len(mylogs), "0.0", len(cur_node.log_templates), len(selected), "0.0", SL, CPL
+            print("\033[1;94mscore= "+str(SL-CPL), "\033[0m")
+            print(sum_matched, len(mylogs), "0.0", len(cur_node.log_templates), len(selected), "0.0", SL, CPL)
