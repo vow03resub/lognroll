@@ -515,7 +515,6 @@ def follows_format(klist):
 
 # The above code does not work on Python 3, so we modified it to code that does not use re module
 
-
     s = []
     for ch in smask:
         if ch in "0123456789":
