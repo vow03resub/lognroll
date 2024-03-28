@@ -509,7 +509,12 @@ def follows_format(klist):
         else:
             smask = smask + "."
 
-    # smask = re.sub("[0-9]","\d",smask)
+#    smask = re.sub("[0-9]","dd",smask)
+
+#    smask = re.sub("[0-9]","\d",smask)
+
+# The above code does not work on Python 3, so we modified it to code that does not use re module
+
 
     s = []
     for ch in smask:
