@@ -775,7 +775,7 @@ def replace_known_patterns(tlogs):
                 month = matched.group(2)
                 day = matched.group(3)
 
-                if int(year)>2020:
+                if int(year)>datetime.today().year:
                     is_date = False
                 if int(month)>12:
                     is_date = False
