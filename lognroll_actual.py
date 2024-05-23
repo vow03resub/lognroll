@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/python
 #-*- coding: utf-8 -*-
 
 import os
@@ -14,6 +14,7 @@ import pickle
 from scipy import stats
 from random import randint
 from collections import defaultdict
+from datetime import datetime
 
 global debug_mode
 global smask
@@ -405,6 +406,19 @@ def are_all_numbers(numlist):
             return False
     return True
 
+# included code 2024-03-20
+def is_include_percentage(tok):
+    if re.match(r'[\d\w\W\s]*\d+\.\d+%[\d\w\W\s]*', tok):
+        return True
+    return False
+
+# included code 2024-03-20
+def are_all_include_percentage(tok_list):
+    for tok in tok_list:
+        if not(is_include_percentage(tok)):
+            return False
+    return True
+
 def is_hexa(s):
     try:
         int(s, 16)
@@ -774,7 +788,6 @@ def replace_known_patterns(tlogs):
                 year = matched.group(1)
                 month = matched.group(2)
                 day = matched.group(3)
-
                 if int(year)>datetime.today().year:
                     is_date = False
                 if int(month)>12:
@@ -1057,6 +1070,7 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
             print("    \033[43;5m"+"WILDCARD because they are all numbers."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because they are all numbers."+"\033[0m"
         return '*', pv, cr
+
     if follows_format(list(token_d.keys())):
         if debug_mode:
             print("    \033[43;5m"+"WILDCARD because new pattern is detected."+"\033[0m")
@@ -1067,6 +1081,7 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
             print("    \033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m"
         return '*', pv, cr
+    
     if are_all_hexa(list(token_d.keys())):
         if debug_mode:
             print("    \033[43;5m"+"WILDCARD because they are all hexadecimal numbers."+"\033[0m")
@@ -1173,9 +1188,19 @@ def test_multiple_match(rlogs, vect, log_template):
 
 
 def mark_matched_logs(logs, vect, rlogs, log_template, i):
+#    print('Here is mark_matched_logs')
+    # very long spark log have trouble at this function, so we must check.
+#    print('logs: ')
+#    print(logs)
+#    print('log_template: ')
+#    print(log_template)
+
     #print "Entering mark_matched_logs() Star_count:",log_template.count(".*")
     marked = 0 # how many logs match to the log template?
     replog_selected = False
+
+    log_template = log_template
+
     for j in range(0,len(logs)):
 
         if vect[j]>-1: # skip logs already matched by previous templates
@@ -1185,8 +1210,8 @@ def mark_matched_logs(logs, vect, rlogs, log_template, i):
 
         # TODO if log is too long, it takes too long to match the regular expression even though the number of wildcard is OK.
         # I am shortening the log
-        if len(log)>LOGLEN_THRESHOLD:
-            log = log[:LOGLEN_THRESHOLD]
+#        if len(log)>LOGLEN_THRESHOLD:
+#            log = log[:LOGLEN_THRESHOLD]
 
         matched = re.match("^"+log_template+"$",log)
         if matched!=None:
@@ -2103,6 +2128,10 @@ def construct_candidate_log_templates(input_logs, rep_logs):
                         print("...")
                         break
 
+# we want to see new fword
+#            print('new fword: ' + new_fword)
+#            print("pv: " + str(pv))
+
             if new_fword=="*":
                 if pv<UNIFORM_THRESHOLD: 
                     filter_words,filter_mask = finalize_filter_with_star(filter_words,filter_mask)
@@ -2520,9 +2549,11 @@ if __name__ == '__main__':
         parser.add_argument('--logfile',  type=argparse.FileType('r'), nargs='+', required=True, help='List of one or more input log files')
         parser.add_argument('--debug',  action='store_true', required=False, help='When specified, it walks through each log processing and print out messages.')
         parser.add_argument('--linear',  action='store_true', required=False, help='Whether to follow linear execution path along the tree or not.')
+        # Now, we don't need clean mode
         parser.add_argument('--clean',  action='store_true', required=False, help='When specified, it deletes intermediate pickle files of tokenized log data and reprocess them. It takes longer.')
 
         args = parser.parse_args()
+        args.clean = True
         openfile_list = args.logfile
         if len(openfile_list)>1:
             print("Specify only one log file. Currently",len(openfile_list),"are given.")
@@ -2551,8 +2582,8 @@ if __name__ == '__main__':
         clean_mode = False
         if args.clean==False:
             if prev_reuse_logfilename==openfile_list[0].name:
-                clean_mode = False
-                print("\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m")
+               clean_mode = False
+               print("\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m")
             else:
                 print("\033[31;91mAlthough you wanted FAST REUSE mode, the input log file is different from the previous run. Forcing clean mode ... \033[0m")
                 print("\033[37;101mClean (slow) mode\033[0m")
