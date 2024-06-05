@@ -408,6 +408,7 @@ def are_all_numbers(numlist):
 
 # included code 2024-03-20
 def is_include_percentage(tok):
+
     if regex.match(r'[\d\w\W\s]*\d+\.\d+%[\d\w\W\s]*', tok):
         return True
     return False
@@ -1084,6 +1085,7 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
 
     if are_all_include_percentage(list(token_d.keys())):
         return '*', pv, cr
+
     
     if are_all_hexa(list(token_d.keys())):
         if debug_mode:
@@ -2585,8 +2587,8 @@ if __name__ == '__main__':
         clean_mode = False
         if args.clean==False:
             if prev_reuse_logfilename==openfile_list[0].name:
-                clean_mode = False
-                print("\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m")
+               clean_mode = False
+               print("\033[2;102mNon-Clean (cache reuse, fast) mode\033[0m")
             else:
                 print("\033[31;91mAlthough you wanted FAST REUSE mode, the input log file is different from the previous run. Forcing clean mode ... \033[0m")
                 print("\033[37;101mClean (slow) mode\033[0m")
