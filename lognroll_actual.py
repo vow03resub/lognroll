@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 
 import os
-import re
+import regex
 import ast
 import sys
 import copy
@@ -248,7 +248,7 @@ def split_by_delimiter(lvl, str_data, delim):
         while found:
             diff = 0
             found = False
-            matched = re.finditer("[\t ](\S+[=])"+keyval_pattern["pattern"]+"[\t ]", s)
+            matched = regex.finditer("[\t ](\S+[=])"+keyval_pattern["pattern"]+"[\t ]", s)
             for m in matched:
                 label_str = "~KV"+format(seqnum,'09d')+"~"
                 seqnum += 1
@@ -260,7 +260,7 @@ def split_by_delimiter(lvl, str_data, delim):
         str_data = s[1:len(s)-1] # remove spaces at the front and back
 
     # split the input string by delimiter
-    tokenized = re.split("("+delim+")",str_data) # keep the delimiter within the list
+    tokenized = regex.split("("+delim+")",str_data) # keep the delimiter within the list
 
     # remove empty token
     removed = True
@@ -408,7 +408,8 @@ def are_all_numbers(numlist):
 
 # included code 2024-03-20
 def is_include_percentage(tok):
-    if re.match(r'[\d\w\W\s]*\d+\.\d+%[\d\w\W\s]*', tok):
+
+    if regex.match(r'[\d\w\W\s]*\d+\.\d+%[\d\w\W\s]*', tok):
         return True
     return False
 
@@ -525,17 +526,17 @@ def follows_format(klist):
 
 #    smask = re.sub("[0-9]","dd",smask)
 
-#    smask = re.sub("[0-9]","\d",smask)
+    smask = regex.sub("[0-9]","\d",smask)
 
 # The above code does not work on Python 3, so we modified it to code that does not use re module
 
-    s = []
-    for ch in smask:
-        if ch in "0123456789":
-            s.append('\d')
-        else:
-            s.append(ch)
-    smask = "".join(s)
+    # s = []
+    # for ch in smask:
+    #   if ch in "0123456789":
+    #        s.append('\d')
+    #    else:
+    #        s.append(ch)
+    # smask = "".join(s)
 
     if fixed_count==0:
         return False
@@ -737,7 +738,7 @@ def preprocess_known_patterns(logs):
             while found:
                 diff = 0
                 found = False
-                matched = re.finditer(item["pattern"], log)
+                matched = regex.finditer(item["pattern"], log)
                 for m in matched:
                     label_str = item["prefix"]+"_"+format(int(item["serial"]),'09d')
                     item["serial"]=str(int(item["serial"])+1)
@@ -768,11 +769,11 @@ def replace_known_patterns(tlogs):
 
             # preprocess any troublesome characters to special marker
             if '*' in w:
-                tlogs[i][j] = re.sub("\*","~200~",w)
+                tlogs[i][j] = regex.sub("\*","~200~",w)
                 w = tlogs[i][j]
 
             for pat in standalone_patterns:
-                matched = re.match("^"+pat["pattern"]+"$",w)
+                matched = regex.match("^"+pat["pattern"]+"$",w)
                 if matched!=None:
 
                     #tlogs[i][j] = pat["label"]
@@ -783,7 +784,7 @@ def replace_known_patterns(tlogs):
                     #print "\033[0;35m"+matched.group(0)+"\033[0m -->", tlogs[i][j]
 
             is_date = True
-            matched = re.match("^(\\d{4})\-(\\d{2})\-(\\d{2})$",w)
+            matched = regex.match("^(\\d{4})\-(\\d{2})\-(\\d{2})$",w)
             if matched!=None:
                 year = matched.group(1)
                 month = matched.group(2)
@@ -858,12 +859,12 @@ def uniquify_numbers(tlogs):
             if w in [' ',':',',','=','<','>']:
                 continue
             if '*' in w:
-                tlogs[i][j] = re.sub("\*","~200~",w)
+                tlogs[i][j] = regex.sub("\*","~200~",w)
                 w = tlogs[i][j]
 
             found = False
             for p in number_patterns: 
-                matched = re.match("^"+p["pattern"]+"$", w)
+                matched = regex.match("^"+p["pattern"]+"$", w)
                 if matched!=None:
                     found = True
                     break
@@ -945,11 +946,11 @@ def apply_all_patterns(tlogs):
 
             # preprocess any troublesome characters to special marker
             if '*' in word:
-                tlogs[i][j] = re.sub("\*","~200~",word)
+                tlogs[i][j] = regex.sub("\*","~200~",word)
                 word = tlogs[i][j]
 
             for p in standalone_patterns:
-                matched = re.match("^"+p["pattern"]+"$",word)
+                matched = regex.match("^"+p["pattern"]+"$",word)
                 if matched!=None:
                     tlogs[i][j] = p["label"]
                     #print "\033[0;35m"+matched.group(0)+"\033[0m -->", tlogs[i][j]
@@ -989,7 +990,7 @@ def apply_new_patterns(tlogs):
 #                word = tlogs[i][j]
 
             p = standalone_patterns[-1] # just use the newly added pattern, no need to match all
-            matched = re.match("^"+p["pattern"]+"$",word)
+            matched = regex.match("^"+p["pattern"]+"$",word)
             if matched!=None:
                 tlogs[i][j] = p["label"]
                 #print "\033[0;35m"+matched.group(0)+"\033[0m -->", tlogs[i][j]
@@ -1081,6 +1082,10 @@ def determine_filter_word(token_d, tlen, fillup_ratio):
             print("    \033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m")
         #print "\033[43;5m"+"WILDCARD because it is a uniform distribution."+"\033[0m"
         return '*', pv, cr
+
+    if are_all_include_percentage(list(token_d.keys())):
+        return '*', pv, cr
+
     
     if are_all_hexa(list(token_d.keys())):
         if debug_mode:
@@ -1136,7 +1141,7 @@ def match_and_remove(tmpl,logs):
     match_count = 0
     for i in range(0,len(logs)):
         log = logs[i]
-        matched = re.match("^"+tmpl+"$",log)
+        matched = regex.match("^"+tmpl+"$",log)
 
         if matched!=None:
             match_count = match_count + 1
@@ -1163,7 +1168,7 @@ def exist_match(log_template, logs):
     for i in range(0,len(logs)):
         if logs[i]==None: 
             continue
-        matched = re.match("^"+log_template+"$", logs[i])
+        matched = regex.match("^"+log_template+"$", logs[i])
         if matched!=None:
             if debug_mode:
                 print("\033[0;32mMatch found at "+str(i)+":", logs[i], "\033[0m ")
@@ -1179,7 +1184,7 @@ def test_multiple_match(rlogs, vect, log_template):
         if vect[j]==-1:
             continue
         log = rlogs[j]
-        matched = re.match("^"+log_template+"$", "".join(log))
+        matched = regex.match("^"+log_template+"$", "".join(log))
         if matched!=None:
             #print "      ", "".join(log)
             to_delete.append(j)
@@ -1213,7 +1218,7 @@ def mark_matched_logs(logs, vect, rlogs, log_template, i):
 #        if len(log)>LOGLEN_THRESHOLD:
 #            log = log[:LOGLEN_THRESHOLD]
 
-        matched = re.match("^"+log_template+"$",log)
+        matched = regex.match("^"+log_template+"$",log)
         if matched!=None:
             vect[j] = i
             marked += 1
@@ -1239,7 +1244,7 @@ def remove_log_template_matches(logs, logtem):
         before_removal = len(logs)
         alog = None
         for j in reversed(list(range(0,len(logs)))):
-            matched = re.match("^"+log_template+"$",logs[j])
+            matched = regex.match("^"+log_template+"$",logs[j])
             if matched!=None:
                 alog = logs[j]
                 del logs[j]
@@ -1404,7 +1409,7 @@ def sample_by_signature(logs, ssize):
     # dictionary of signature
     tlen_d = defaultdict()
     for n in numset:
-        signature = re.sub("[\d\s\w]","",logs[n])
+        signature = regex.sub("[\d\s\w]","",logs[n])
         if signature not in tlen_d:
             tlen_d[signature]=0
         tlen_d[signature] += 1
@@ -1416,7 +1421,7 @@ def sample_by_signature(logs, ssize):
 
     selected=[]
     for log in logs:
-        if re.sub("[\d\s\w]","",log)==most_popular:
+        if regex.sub("[\d\s\w]","",log)==most_popular:
             selected.append(log)
         if len(selected)>=ssize:
 
@@ -1702,24 +1707,24 @@ def Generate_log_template(fwords):
     # Transform the discovered log template into a python-ready form
     log_template = "".join(fwords).strip()
 
-    log_template = re.sub("\\\\","\\\\\\\\",log_template )
-    log_template = re.sub("\-","\-",log_template)
-    log_template = re.sub("\[","\[",log_template)
-    log_template = re.sub("\]","\]",log_template)
-    log_template = re.sub("\(","\(",log_template)
-    log_template = re.sub("\)","\)",log_template)
-    log_template = re.sub("\$","\$",log_template)
-    log_template = re.sub("\?","\?",log_template)
-    log_template = re.sub("\+","\+",log_template)
-    log_template = re.sub("\|","\|",log_template)
+    log_template = regex.sub("\\\\","\\\\\\\\",log_template )
+    log_template = regex.sub("\-","\-",log_template)
+    log_template = regex.sub("\[","\[",log_template)
+    log_template = regex.sub("\]","\]",log_template)
+    log_template = regex.sub("\(","\(",log_template)
+    log_template = regex.sub("\)","\)",log_template)
+    log_template = regex.sub("\$","\$",log_template)
+    log_template = regex.sub("\?","\?",log_template)
+    log_template = regex.sub("\+","\+",log_template)
+    log_template = regex.sub("\|","\|",log_template)
     #log_template = re.sub("\\\\","~201~",log_template)
 
-    log_template = re.sub("\*","\S+",log_template)
+    log_template = regex.sub("\*","\S+",log_template)
 
     for it in standalone_patterns:
-        log_template = re.sub(it["label"],"\S+",log_template)
+        log_template = regex.sub(it["label"],"\S+",log_template)
     
-    log_template = re.sub("~200~","\*",log_template)
+    log_template = regex.sub("~200~","\*",log_template)
 
     # recover special common word patterns
     #for n in range(0,len(common_patterns)):
@@ -1730,10 +1735,10 @@ def Generate_log_template(fwords):
     #log_template = re.sub("~300~","\S+",log_template)
 
 
-    log_template = re.sub("\\S+~","\S+",log_template)
+    log_template = regex.sub("\\S+~","\S+",log_template)
 
-    log_template = re.sub("\\\\\[\\\\\]","\\[\S*\\]",log_template)
-    log_template = re.sub("{}","{\S*}",log_template)
+    log_template = regex.sub("\\\\\[\\\\\]","\\[\S*\\]",log_template)
+    log_template = regex.sub("{}","{\S*}",log_template)
 
     final_template = []
     for t in log_template.split():
@@ -1747,14 +1752,14 @@ def Generate_log_template(fwords):
     while found:
         diff = 0
         found = False
-        matched = re.finditer("(\\\\S\+)[:]\\\\S\+", log_template)
+        matched = regex.finditer("(\\\\S\+)[:]\\\\S\+", log_template)
         for m in matched:
             log_template = log_template[0:m.start()-diff]+"\S+"+log_template[m.end()-diff:]
             diff = diff + 4
             found = True
 
     while "\S+\S+" in log_template:
-        log_template = re.sub("\\\\S\+\\\\S\+", "\S+", log_template)
+        log_template = regex.sub("\\\\S\+\\\\S\+", "\S+", log_template)
 
 
     #log_template = re.sub("\\\\S\+ \\\\S\+",".*",log_template)
@@ -1805,7 +1810,7 @@ def generate_log_template_star(fwords,realcall):
         while found:
             diff = 0
             found = False
-            matched = re.finditer(item["pattern"], log_template)
+            matched = regex.finditer(item["pattern"], log_template)
             for m in matched:
 
                 found = True
@@ -1822,40 +1827,40 @@ def generate_log_template_star(fwords,realcall):
                 #if found and realcall:
                 #    print "   \033[0;102m<(3)", log_template, "\033[0m"
 
-    log_template = re.sub("\\\\","\\\\\\\\",log_template )
-    log_template = re.sub("\-","\-",log_template)
-    log_template = re.sub("\[","\[",log_template)
-    log_template = re.sub("\]","\]",log_template)
-    log_template = re.sub("\(","\(",log_template)
-    log_template = re.sub("\)","\)",log_template)
-    log_template = re.sub("\$","\$",log_template)
-    log_template = re.sub("\?","\?",log_template)
-    log_template = re.sub("\+","\+",log_template)
-    log_template = re.sub("\|","\|",log_template)
+    log_template = regex.sub("\\\\","\\\\\\\\",log_template )
+    log_template = regex.sub("\-","\-",log_template)
+    log_template = regex.sub("\[","\[",log_template)
+    log_template = regex.sub("\]","\]",log_template)
+    log_template = regex.sub("\(","\(",log_template)
+    log_template = regex.sub("\)","\)",log_template)
+    log_template = regex.sub("\$","\$",log_template)
+    log_template = regex.sub("\?","\?",log_template)
+    log_template = regex.sub("\+","\+",log_template)
+    log_template = regex.sub("\|","\|",log_template)
     #log_template = re.sub("\\\\","~201~",log_template)
 
     #log_template = re.sub("\*","\S+",log_template)
-    log_template = re.sub("\*",".*",log_template)
+    log_template = regex.sub("\*",".*",log_template)
 
     for it in standalone_patterns:
         #log_template = re.sub(it["label"],"\S+",log_template)
-        log_template = re.sub(it["label"],".*",log_template)
+        log_template = regex.sub(it["label"],".*",log_template)
     
-    log_template = re.sub("~200~","\*",log_template)
+    log_template = regex.sub("~200~","\*",log_template)
 
     # recover special common word patterns
     #for n in range(0,len(common_patterns)):
     #    log_template = re.sub(common_patterns[n]["label"], ".*", log_template)
     #log_template = re.sub("~300~",".*",log_template)
 
-    log_template = re.sub("~\\S+~",".*",log_template)
+    log_template = regex.sub("~\\S+~",".*",log_template)
 
     for p in common_patterns:
         marker = p["prefix"]+"_"+"\\d{9}"
-        log_template = re.sub(marker,".*",log_template)
+        log_template = regex.sub(marker,".*",log_template)
 
-    log_template = re.sub("\\\\\[\\\\\]","\\[.*\\]",log_template)
-    log_template = re.sub("{}","{.*}",log_template)
+    log_template = regex.sub("\\\\\[\\\\\]","\\[.*\\]",log_template)
+    log_template = regex.sub("{}","{.*}",log_template)
 
     final_template = []
     for t in log_template.split():
@@ -1869,24 +1874,24 @@ def generate_log_template_star(fwords,realcall):
     while found:
         diff = 0
         found = False
-        matched = re.finditer("(\.\*)[:]\.\*", log_template)
+        matched = regex.finditer("(\.\*)[:]\.\*", log_template)
         for m in matched:
             log_template = log_template[0:m.start()+1-diff]+log_template[(m.end()-1)-diff:]
             diff += 3
             found = True
 
     while ".* .*" in log_template:
-        log_template = re.sub("\.\* \.\*", ".*", log_template)
+        log_template = regex.sub("\.\* \.\*", ".*", log_template)
 
     while "..*" in log_template:
-        log_template = re.sub("\.\.\*", ".*", log_template)
+        log_template = regex.sub("\.\.\*", ".*", log_template)
 
     while ".*.*.*.*" in log_template:
-        log_template = re.sub("\.\*\.\*\.\*\.\*", ".*", log_template)
+        log_template = regex.sub("\.\*\.\*\.\*\.\*", ".*", log_template)
     while ".*.*.*" in log_template:
-        log_template = re.sub("\.\*\.\*\.\*", ".*", log_template)
+        log_template = regex.sub("\.\*\.\*\.\*", ".*", log_template)
     while ".*.*" in log_template:
-        log_template = re.sub("\.\*\.\*", ".*", log_template)
+        log_template = regex.sub("\.\*\.\*", ".*", log_template)
 
     if log_template.count(".*") > STAR_THRESHOLD:
         parts=log_template.split(".*")
@@ -1904,9 +1909,9 @@ def generate_log_template_star(fwords,realcall):
 def postprocess_raw_template(fwords):
     logtem= "".join(fwords).strip()
     for it in standalone_patterns:
-        logtem= re.sub(it["label"],"*",logtem)
-    logtem = re.sub("~200~","*",logtem)
-    logtem = re.sub("~300~","*",logtem)
+        logtem= regex.sub(it["label"],"*",logtem)
+    logtem = regex.sub("~200~","*",logtem)
+    logtem = regex.sub("~300~","*",logtem)
     return logtem 
 
 
@@ -2069,7 +2074,7 @@ def construct_candidate_log_templates(input_logs, rep_logs):
 
                 found = False
                 for p in number_patterns: 
-                    matched = re.match("^"+p["pattern"]+"$", runlength_token)
+                    matched = regex.match("^"+p["pattern"]+"$", runlength_token)
                     if matched!=None:
                         found = True
                 if found:
@@ -2239,7 +2244,7 @@ def compute_slcpl(thelogs, logtem):
         to_delete = []
         for i in range(0,len(thelogs)):
             log = thelogs[i]
-            matched = re.match("^"+t["template"]+"$",log)
+            matched = regex.match("^"+t["template"]+"$",log)
 
             if matched!=None:
                 to_delete.append(i)
@@ -2408,7 +2413,7 @@ def mark_matched_logs2(logs, mask, template, verbose=False):
         #    new_tem=template.replace(".*","\S*")
         #    template=new_tem
 
-        matched = re.match('^'+template+'$', log)
+        matched = regex.match('^'+template+'$', log)
         if matched!=None:
             mask[i]=99
             marked+=1
@@ -2419,7 +2424,7 @@ def mark_matched_logs2(logs, mask, template, verbose=False):
 
 def tokenize_log_template(s):    
 
-    s = re.sub("\\\\","",s)
+    s = regex.sub("\\\\","",s)
     tok = custom_split(s) 
     for y in range(0,len(tok)): 
         if '~' in tok[y]:
@@ -2428,16 +2433,16 @@ def tokenize_log_template(s):
 
 
 def escape_log_template(s):
-    s = re.sub("\\\\","\\\\\\\\",s )
-    s = re.sub("\-","\-",s)
-    s = re.sub("\[","\[",s)
-    s = re.sub("\]","\]",s)
-    s = re.sub("\(","\(",s)
-    s = re.sub("\)","\)",s)
-    s = re.sub("\$","\$",s)
-    s = re.sub("\?","\?",s)
-    s = re.sub("\+","\+",s)
-    s = re.sub("\|","\|",s)
+    s = regex.sub("\\\\","\\\\\\\\",s )
+    s = regex.sub("\-","\-",s)
+    s = regex.sub("\[","\[",s)
+    s = regex.sub("\]","\]",s)
+    s = regex.sub("\(","\(",s)
+    s = regex.sub("\)","\)",s)
+    s = regex.sub("\$","\$",s)
+    s = regex.sub("\?","\?",s)
+    s = regex.sub("\+","\+",s)
+    s = regex.sub("\|","\|",s)
     return s
 
 
@@ -2539,7 +2544,7 @@ reuse_logfilename="CODE50_REUSE_LOG.p"
 
 if __name__ == '__main__':
 
-    global debug_mode
+    # global debug_mode
     global new_pattern_added
     debug_mode = False
 
