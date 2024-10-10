@@ -16,7 +16,8 @@ pickle
 
 ### Expected log format for input
 The format of logs input to lognroll are expected to follow this.
-* Time, date fields are removed.
+* Log files should be in plain text.
+* Time, date fields are removed at the beginning of each line.
 * It is not required, but better to have the line start with log level such as INFO, or DEBUG.
 * These are the examples.
 
