@@ -19,11 +19,12 @@ The format of logs input to lognroll are expected to follow this.
 * Time, date fields are removed.
 * It is not required, but better to have the line start with log level such as INFO, or DEBUG.
 * These are the examples.
-  
- INFO org.apache.hadoop.hdfs.server.datanode.DataNode: STARTUP_MSG: 
- INFO org.apache.hadoop.hdfs.server.datanode.DataNode: registered UNIX signal handlers for [TERM, HUP, INT]
- INFO org.apache.hadoop.metrics2.impl.MetricsConfig: loaded properties from hadoop-metrics2.properties
- 
+
+```
+INFO org.apache.hadoop.hdfs.server.datanode.DataNode: STARTUP_MSG: 
+INFO org.apache.hadoop.hdfs.server.datanode.DataNode: registered UNIX signal handlers for [TERM, HUP, INT]
+INFO org.apache.hadoop.metrics2.impl.MetricsConfig: loaded properties from hadoop-metrics2.properties
+``` 
 
 ### How to run
 $ python ./lognroll_actual.py --linear --logfile logs/hadoop_clean.log
