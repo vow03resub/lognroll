@@ -20,10 +20,10 @@ pickle
 $ python ./lognroll_actual.py --linear --logfile logs/hadoop_clean.log
 
 ### Execution Parameter
---linear: Whether to follow linear execution path along the tree or not.
---clean: When specified, it deletes intermediate pickle files of tokenized log data and reprocess them. It takes longer.
---debug: When specified, it walks through each log processing and print out messages.
---logfile: List of one or more input log files
+* --linear: Whether to follow linear execution path along the tree or not.
+* --clean: When specified, it deletes intermediate pickle files of tokenized log data and reprocess them. It takes longer.
+* --debug: When specified, it walks through each log processing and print out messages.
+* --logfile: List of one or more input log files
 
 ### Default log files
 By default, the logs folder has log files extracted from Hadoop and Cassandra, respectively. If you want to input the log files you extracted yourself, you'd better put the timestamp-removed log file.
